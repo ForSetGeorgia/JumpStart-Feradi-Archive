@@ -23,4 +23,5 @@
 #ignore chromedriver.log
 chromedriver.log
 
-.env
+# ignore .env
+/.env

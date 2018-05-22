@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
+ruby "2.3.4"
+
 gem 'bundler'
-gem "rails", "3.2.22"
+gem "rails", "3.2.22.5"
 gem "mysql2", "~> 0.3.21" # this gem works better with utf-8
 
 gem "json"
@@ -64,10 +66,10 @@ group :development do
   # Finds unused and missing translations
   gem 'i18n-tasks', '~> 0.8.7'
 
-	gem "mailcatcher", "0.5.10" # small smtp server for dev, http://mailcatcher.me/
+	# gem "mailcatcher", "0.5.10" # small smtp server for dev, http://mailcatcher.me/
 #	gem "wkhtmltopdf-binary", "~> 0.9.5.3" # web kit that takes html and converts to pdf
-  # gem 'rb-inotify', '~> 0.8.8' # rails dev boost needs this
-  # gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git' # speed up loading page in dev mode
+  gem 'rb-inotify', '~> 0.8.8' # rails dev boost needs this
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git' # speed up loading page in dev mode
 end
 
 group :test do
@@ -102,5 +104,6 @@ group :development, :test do
 end
 
 group :staging, :production do
-	gem "unicorn", "4.8.3" # http server
+	gem 'unicorn', '~> 5.3.1' # http server
+  gem 'unicorn-worker-killer', '~> 0.4.4' # kill the workers if they take up too much memory
 end
