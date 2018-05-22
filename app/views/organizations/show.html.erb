@@ -1,0 +1,35 @@
+<div id="org-top">
+
+  <%= page_title @organization.name %>
+
+  <% if @user_in_org && current_user.role?(User::ROLES[:org_admin]) && params[:controller] == 'organizations' %>
+  <div class="form-actions">
+    <%= link_to t("helpers.links.edit_org", :org => @organization.name),
+        edit_organization_path(@organization.permalink), :class => 'btn' %>
+	  <%= link_to t('helpers.links.new_visual', :org => @organization.name),
+			  new_organization_visualization_path(@organization.permalink), :class => 'btn btn-primary' %>
+  </div>
+  <% end %>
+
+
+  <div class="row-fluid">
+    <div class="span12">
+	    <%= image_tag @organization.logo.url if @organization.logo_file_name %>
+		  <%= link_to t('helpers.links.website'), @organization.url, :class => 'visit_website', :target => :blank if @organization.url %>
+    </div>
+  </div>
+
+  <div class="desc">
+    <%= simple_format @organization.bio %>
+  </div>
+
+</div>
+
+<%= render "shared/visuals_filter_bar", :show_toggle => false %>
+
+
+<div class="visual_list org">
+	<%= render @view_type %>
+</div>
+
+<a id="load_more_link" href="#" style="display: none;"><%= t('helpers.links.more') %></a>

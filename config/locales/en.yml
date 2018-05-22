@@ -1,0 +1,669 @@
+# encoding: utf-8
+en:
+  activerecord:
+    models:
+      user: User
+      category: Category
+      organization: Organization
+      visualization: Visualization
+      page: Page
+      message: Message
+      datasource: Data Source
+      idea: Idea
+      idea_inappropriate_report: Report
+      idea_status: Idea Status
+      idea_progress: Idea Progress
+    attributes:
+      user:
+        email: Email Address
+        password: Password
+        password_confirmation: Password Confirmation
+        role: Role
+        remember_me: Remember Me
+        nickname: Nickname
+      message:
+        name: Name
+        phone: Phone Number
+        email: Email Address
+        message: Message
+        what_is_data: Briefly describe the data that you want to visualize
+        why_visualize: Why do you want to visualize this data?
+        datasource: What is the data source?
+        file: Attach the data file
+        how_use: Why would you like to use feradi.info to show your visualiations?
+        organization: Organization
+      category:
+        icon: Icon
+      category_translation:
+        name: Name
+      organization:
+        logo: Logo
+        url: Website
+      organization_translation:
+        name: Name
+        bio: About
+        permalink: Name in URL
+        permalink_hint: "If you want to generate a new URL name, simply delete the text and a new one will be generated when the record is saved.  Make sure you do this for all languages."
+      organization_user:
+        is_active: Active?
+        user_id: User
+        organization_id: Organization
+      page:
+        name: Name
+      page_translation:
+        title: Title
+        description: Content
+      visualization:
+        published_date: Publication Date
+        published: Release to Public?
+        visualization_type_id: Visualization Type
+        individual_votes: Individual Votes
+        overall_votes: Overall Votes
+        dataset: Dataset File
+#        visual: Visual File
+        visualization_categories: Categories
+        is_promoted: Promote to Home Page?
+        promoted_at: Date Promoted
+        languages: Languages
+        languages_internal: Languages
+        reset_languages: Change the Languages
+      visualization_translation:
+        title: Title
+        permalink: Name in URL
+        permalink_hint: "If you want to generate a new URL name, simply delete the text and a new one will be generated when the record is saved.  Make sure you do this for all languages."
+        explanation: Explanation
+        visualization_text: Text from Visualization
+        visualization_text_hint: Text from the Visual that should be made available to the search engines.
+        reporter: "Reporter (Name, Organization)"
+        designer: "Designer (Name, Organization)"
+        developer: "Developer (Name, Organization)"
+        interactive_url: Interactive Visual URL
+        researcher: "Researcher (Name, Organization)"
+        narrator: "Narrator (Name, Organization)"
+        producer: "Producer (Name, Organization)"
+        director: "Director (Name, Organization)"
+        writer: "Writer (Name, Organization)"
+        sound_music: "Sound / Music Designer (Name, Organization)"
+        designer_animator: "Designer / Animator (Name, Organization)"
+        interactive_url: URL to Interactive Visualization
+        video_url: Video URL
+        video_embed: Video
+      image_file:
+        file: Visual File
+        reset_crop: Redo the Thumbnail Image
+        reset_file: Load a New File
+        reset_url: Retake URL Screenshot
+      dataset_file:
+        file: Dataset File
+      datasource:
+        name: Name of Data Source
+        url: URL of Data Source
+      idea:
+        user_id: User
+        explaination: Explanation
+        created_at: Date
+        individual_votes: Individual Votes
+        overall_votes: Overall Votes
+        is_duplicate: Duplicate?
+        is_inappropriate: Inappropriate?
+        is_public: Is Public?
+        current_status_id: Current Status
+      idea_category:
+        idea_id: Idea
+        category_id: Category
+      idea_progress:
+        idea_id: Idea
+        organization_id: Organization
+        is_completed: News Story Completed?
+        url: News Story URL
+        progress_date: Date
+        explaination: Explanation
+        idea_status_id: Status
+        idea_status: Status
+        is_public: Is Public?
+      idea_inappropriate_report:
+        user_id: User
+        idea_id: Idea
+        reason: Why is Idea Inappropriate?
+      idea_status:
+        sort: Sort Order
+        sort_hint: "1, 2, 3, etc. (ascending order)"
+        is_published: Published?
+        is_published_hint: This status indicates that the idea is published
+      idea_status_translation:
+        name: Name
+    messages:
+      idea_progress:
+        success: "The record was successfully saved."
+    errors:
+      messages:
+        published_visual_missing_fields: "is required when the visual is published."
+        contact_missing_fields: "can't be blank."
+        send_data_missing_fields: "can't be blank."
+        submit_visual_missing_fields: "can't be blank."
+        required_field: "is a required field."
+        already_exists: 'already exists in the database.'
+        image_type_does_not_match_vis_type: 'type "%{extension}" is not allowed for %{vis_type} visualizations. Allowed types: %{allowed_types}'
+  activemodel:
+    errors:
+      models:
+        message:
+          attributes:
+            email:
+              invalid: "Please provide an Email Address"
+            message:
+              blank: "Please provide a Message"
+  mailer:
+    closing: "Sincerely,"
+    signature: feradi.info
+    unsubscribe: Click here to unsubscribe
+    notification:
+      new_user:
+        subject: "Welcome to feradi.info!"
+        message: "Thank you for becoming a member of feradi.info and contributing to colorful news.  You can manage when you would like to receive emails from feradi.info by clicking on the following link."
+      new_visualization:
+        subject: "A new visualization has been added to feradi.info!"
+        message: "A new visualization titled '%{title}' has been added.  This is the description of the visual:"
+      new_visualization_needs_promotion:
+        subject: "A new visualization has been added to feradi.info and needs review for promotion to the homepage"
+        message: "A new visualization titled '%{title}' has been added.  This is the description of the visual:"
+      visualization_comment:
+        subject: "Someone has commented on your visualization '%{title}' on feradi.info"
+        message: "Please click on the link below to view the comment."
+      visualization_promoted:
+        subject: "Your visualization '%{title}' has been promoted to the front page on feradi.info!"
+        message: "Congratulations!  feradi.info has promoted your visualization to the home page."
+      idea_claimed_owner:
+        subject: "%{organization} is interested in your idea!"
+        message: "%{organization} has expressed interest in writing a story about your idea.  This is what they wrote:"
+      idea_progress_update_owner:
+        subject: "%{organization} has updated their progress on your idea"
+        message: "%{organization} has made a progress report on your idea.  This is what they wrote:"
+      idea_realized_owner:
+        subject: "%{organization} has completed their work on your idea!"
+        message: "%{organization} has published a story about your idea.  This is what they wrote:"
+      idea_comment_owner:
+        subject: "Someone has commented on your idea"
+        message: "Please click on the link below to view the comment."
+      new_idea_subscriber:
+        subject: "A new idea has been submitted"
+        message: "This is the new idea:"
+      idea_claimed_subscriber:
+        subject: "%{organization} is interested in an idea you care about"
+        message: "%{organization} has expressed interest in writing a story on an idea you care about.  This is what they wrote:"
+      idea_progress_update_subscriber:
+        subject: "%{organization} has updated their progress on an idea you care about"
+        message: "%{organization} has made a progress report on an idea you care about.  This is what they wrote:"
+      idea_realized_subscriber:
+        subject: "%{organization} has completed their work on an idea you care about!"
+        message: "%{organization} has published a story about an idea you care about.  This is what they wrote:"
+      idea_comment_subscriber:
+        subject: "Someone has commented on an idea you care about"
+        message: "Please click on the link below to view the comment."
+    contact:
+      contact_form:
+        subject: "feradi.info Contact Form"
+      submit_visual:
+        subject: "feradi.info Submit Visual Form"
+      send_data:
+        subject: "feradi.info Send Data Form"
+      print_message:
+        intro: I would like to order a beautiful, high-resolution print of the visualization "%{vis_name}".
+        purpose: "Purpose: (Please tell us how you intend to use this print)"
+        desired_size: "Desired Size (optional):"
+        other_info: "Other Information (optional):"
+  helpers:
+    actions: Actions
+    links:
+      admin: Admin Section
+      edit: Edit
+      confirm: Are you sure?
+      destroy: Delete
+      new: New
+      back: View All
+      list: View All
+      cancel: Cancel
+      reset: Reset
+      sign_in2: Sign In
+      sign_in: "Already have an account?"
+      sign_up2: Sign Up
+      sign_up: "Don't have an account yet?"
+      sign_out: Sign Out
+      website: View Website
+      forgot_password: Forgot Password?
+      password_reset: Send Password Reset Instructions
+      sign_in_provider: "Sign in with %{provider}"
+      download: Download
+      existing_file: View Existing File
+      more: Show More
+      org_profile: "%{org} - Profile"
+      edit_org: "%{org} - Edit"
+      new_visual: "%{org} - Add Visualization"
+      post_idea: Post Idea
+      report_inappropriate: Report Inappropriate Idea
+      follow_idea: Follow
+      unfollow_idea: Unfollow
+      promote: Promote to Homepage
+      unpromote: Remove from Homepage
+    titles:
+      new: "New %{model}"
+      edit: "Edit %{model}"
+  visualization_types:
+    infographic: Infographic
+    interactive: Interactive
+    fact: Fact
+    comic: Comic
+    video: Video
+    gifographic: Gifographic
+  multiselect:
+    checkAllText: 'Check all'
+    uncheckAllText: 'Uncheck all'
+    noneSelectedText: '' #'Select options'
+    selectedText: '# selected'
+  filters:
+    category_default: all
+    visuals:
+      type:
+        header: Type
+        all: All
+        infographic: Infographic
+        interactive: Interactive
+        fact: Fact
+        comic: Comic
+        video: Video
+        gifographic: Gifographic
+        not_published: Not Published
+        not_promoted: Not Promoted
+      view:
+        header: Layout
+        grid: Grid
+        list: List
+      organize:
+        header: Sort
+        recent: Recent
+        likes: Likes
+        views: Views
+      language:
+        header: Language
+    ideas:
+      view:
+        header: Layout
+        grid: Grid
+        list: List
+      organize:
+        header: Sort
+        recent: Recent
+        likes: Likes
+        views: Views
+      filter:
+        header: Filter
+        all: All
+        not_selected: Not Being Worked On
+        in_progress: In Progress
+        completed: Completed
+  app:
+    language:
+      en: English
+      ka: ქართული
+      hy: Հայերեն
+    language_abbreviation:
+      en: EN
+      ka: ქა
+      hy: Հայ
+    buttons:
+      back: Back
+      list: View All
+      admin: Admin Section
+      delete: Delete
+      edit: Edit
+      show: Show
+      cancel: Cancel
+      update: Update
+      save: Save
+      create: Create
+      reset: Reset
+      remove: Remove
+      confirm: Are you sure?
+      new: New
+    common:
+      app_name: feradi.info
+      placeholder: placeholder
+      comments: Comments
+      comments_noun: Comments
+      likes: Likes
+      like: like
+      unlike: unlike
+      share: Share
+      not_published: Not Published
+      category: Category
+      author: Author
+      rating: Rating
+      rate_it: Rate It!
+      top_ideas: Top Ideas
+      new_ideas: New Ideas
+      in_progress: In Progress
+      realized: Realized Ideas
+      post_idea: Post Your Idea
+      search: Search
+      follow_idea: You will now be sent email notifications when updates occur to this idea.
+      follow_idea_bad: The idea could not be found to follow.
+      unfollow_idea: You will no longer be sent email notifications when updates occur to this idea.
+      unfollow_idea_bad: The idea could not be found to unfollow.
+      is_private: NOT PUBLIC
+      last_update: Last Update
+      is_public_explanation: "Idea is public and anyone can see it. Uncheck the box if you want only people from your organization to see it."
+      article_169: "Say No To Article 169. Support Freedom of Expression."
+      language: Language
+      submit: Submit
+    msgs:
+      does_not_exist: You tried to access a page that does not exist.
+      not_authorized: You are not authorized to view that page.
+      permalink_exists: already exists in the database
+      success_created: "%{obj} was successfully created."
+      success_updated: "%{obj} was successfully updated."
+      success_deleted: "%{obj} was successfully deleted."
+      notification_yes: You will be sent notifications.
+      notification_no: You will not be sent notifications.
+      notification_new_visual_all_success: You will recieve a notification whenever a visualization is added.
+      notification_new_visual_none_success: You will not receive any notifications when visualizations are added.
+      notification_new_visual_by_category_success: "You will receive a notification when a visualization is added to these categories: %{categories}."
+      notification_new_idea_all_success: You will recieve a notification whenever an idea is added.
+      notification_new_idea_none_success: You will not receive any notifications when ideas are added.
+      notification_new_idea_by_category_success: "You will receive a notification when an idea is added to these categories: %{categories}."
+      notification_visual_comments_yes: You will be sent notifications when a comment is made on %{org} visualizations.
+      notification_visual_comments_no: You will not be sent notifications when a comment is made on %{org} visualizations.
+      notification_language: You will be sent notifications in %{language}.
+      no_visual_records: No visualization records match your selection.
+      no_idea_records: No ideas match your selection.
+      visual_promoted: The visualization has been promoted to the home page.
+      visual_unpromoted: The visualization will no longer appear on the home page.
+  layouts:
+    application:
+      menu_visual: Visualizations
+      menu_data: Send Data
+      menu_idea: Ideas
+      menu_submit_visual: Submit Visual
+      menu_about: About
+      menu_contact: Contact
+      admin: Admin
+      analytics: Analytics
+      user_profile: Your Profile
+      notifications: Notifications
+      facebook: Facebook
+      twitter: Twitter
+      rss: RSS
+      pinterest: Pinterest
+      subscription: Email Subscription
+      sign_out: Sign Out
+      terms: Terms of Service
+      js_link_title: "Visit JumpStart Georgia's website"
+      js_link_text: Built by
+    interactive:
+      go_back: go back
+    unsupported_browser:
+      title: Unsupported Browser
+      p1: We are sorry to report that your browser is out of date and will not properly render the content from this website.
+      p2: "On the bright side, there are several free browsers that you can download that are compatible with this site."
+      chrome: Chrome
+      firefox: Firefox
+      ie: Internet Explorer (Windows only)
+      opera: Opera
+      Safari: Safari
+      admin: Admin
+      sign_out: Sign Out
+      terms: Terms of Service
+      js_link_title: "Visit JumpStart Georgia's website"
+      js_link_text: Built by
+  admin:
+    index:
+      title: Administration Section
+      categories: Categories
+      organizations: Organizations
+      visualizations: Visualizations
+      users: Users
+      pages: Pages
+      idea_statuses: Idea Status
+      analytics: Analytics
+    users:
+      edit:
+        title: Editing User
+      index:
+        title: Users
+      new:
+        title: New User
+      show:
+        title: User Details
+    analytics:
+      index:
+        title: Analytics
+        nav:
+          prompt: View Engagement By
+          visualization: Visualization
+          category: Category
+          visualization_type: Visualization Type
+      engagement_tables:
+        export_button: Export to CSV
+        columns:
+          views: Views
+          number_visualizations: Amount
+          facebook_shares: Facebook Shares
+          facebook_engagement_rating: Facebook Engagement Rating
+          feradi_likes: Feradi Likes
+          feradi_engagement_rating: Feradi Engagement Rating
+          overall_engagement_rating: Overall Engagement Rating
+        visuals:
+          heading: Engagement
+          columns:
+            title: Visualization Title
+            publication_date: Publication Date
+        categories:
+          heading: Engagement by Visualization Category
+          columns:
+            category_name: Category Name
+        visual_types:
+          heading: Engagement by Visualization Type
+          columns:
+            visual_type: Visualization Type
+  root:
+    index:
+      title: Visualizations
+      header_get_involved: Get Involved!
+      header_ideas: Ideas
+      header_visuals: Visuals
+      header_data: Data
+      text_get_involved: "If you are passionate about exploring and visualizing data, or just have interesting questions that we could answer visually, then get involved!"
+      text_ideas: "Have an idea for a news story? Wish the media would report on an issue that is important to you? Post your idea here. If it is a good one, chances are, a journalist will work on it."
+      text_visuals: "You too can contribute your visual ideas. Go ahead and register with us and begin posting your visuals under your or your organization’s name!"
+      text_data: "If you or your organization possess data that you think is of social interest and you would like someone to visualize it, please send us your data. "
+      button_ideas: Post Idea
+      button_visuals: Register
+      button_data: Send Data
+    about:
+      title: About
+      meta_description: |
+        We Do Data Journalism!
+        We Visualize News
+        What is Data Journalism?
+        Getting Data
+        We seek out data from a variety of organizations, both public and private. When data is not readily available, we request it. When there is no data, we create it.
+        Analyzing Data
+        We look at the data from different angles, analyze it, see trends, observe proportion and relationships. We discover stories.
+        Visualizing Data
+        Visualization provides a unique perspective on data.
+        We make information colourful  by visualizing stories using a variety of tools.
+        We visualize each story using a tool that is better than others. The trick is to choose the right one.
+        Share/Make it public
+        We publish these visualizations on our website, make them freely available for others to use, share them with you, and hope you share them with others.
+        45% more web users will click on a link if it features an infographic
+        30% of those will forward it even if the information is pointless
+        40 % of people respond better to visual information than text
+        90 % of information that comes to the brain is visual
+    data:
+      title: Send Data
+      meta_description: "Do you have data that you would like to see visualized, but do not have the time or skills? Share your data here! If it is interesting, there is a good chance someone will use it, which means you can then reuse their visualization. By sharing with the community, you are becoming part of something larger in which everyone involved benefits."
+      message_sent: Your message has been sent! Thank you for contacting us.
+      send: Send
+      name: Name
+      phone: Phone Number
+      email: Email Address
+      what_is_data: Briefly describe the data that you want to visualize
+      why_visualize: Why do you want to visualize this data?
+      datasource: What is the data source?
+      file: Attach the data file
+      email_us: Send us an email
+      email_subject: "feradi.info Send Data Request"
+    submit_visual:
+      title: Submit a Visual
+      message_sent: Your message has been sent! Thank you for contacting us.
+      send: Send
+      name: Name
+      phone: Phone Number
+      email: Email Address
+      how_use: Why would you like to use feradi.info to post your visualiations?
+      email_us: Send us an email
+      email_subject: "feradi.info Submit Visual Request"
+    terms:
+      title: Terms of Service
+    rss:
+      title: RSS
+    contact:
+      title: Contact Us
+      meta_description: "If you are interested in visualizing data, but do not know how to do it, get in touch with us. We would love to invite you to our office, share our knowledge and experience, and welcome you to data visualization community!"
+      message_sent: Your message has been sent! Thank you for contacting us.
+      send: Send
+      name: Name
+      email: Email Address
+      message: Message
+      address_map: Find our office on the map
+      email_us: Send us an email
+      email_subject: "feradi.info Contact Form"
+      address: "#5 Shevchenko St, Apt 2, 0108, Tbilisi, Georgia"
+      error_title: An error has occurred
+  visuals:
+    index:
+      title: Visualizations
+      title_feed: "%{app_name} Visualizations"
+  shared:
+    visuals_show:
+      organization: Organization
+      reporter: Reporter
+      designer: Designer
+      developer: Developer
+      researcher: Researcher
+      narrator: Narrator
+      producer: Producer
+      director: Director
+      writer: Writer
+      sound_music: "Sound / Music Designer"
+      designer_animator: "Designer / Animator"
+      data_source: Data Source
+      data_set: Data Set
+      type: Type
+      embed: Embed
+      embed_link_title: Click to view larger image
+      embed_link_interactive_title: Click to view interactive visualization
+      comment_count: Comments
+      gifographic_image_titles:
+        play: Click to Play
+        stop: Click to Stop
+      print:
+        label: Print
+        question:
+          default: Want a beautiful, high-resolution print of this visualization?
+          infographic: Want a beautiful, high-resolution print of this infographic?
+          fact: Want a beautiful, high-resolution print of this fact?
+          comic: Want a beautiful, high-resolution print of this comic?
+        contact_us: Contact us!
+    visuals_filter_bar:
+      categories: Categories
+    ideas_list:
+      no_ideas: No Idea records were found.
+      idea_title: "Idea #%{number}"
+    ideas_grid:
+      idea_title: "Idea #%{number}"
+    ideas_form:
+      sign_in: Sign In to Post
+  visualizations:
+    form:
+      locale_to_crop:
+        preview: Preview
+        crop_image: Create %{language} Thumbnail Image
+      reset_visual_image_file:
+        reset_file: Load New %{language} Infographic
+      reset_interactive_url:
+        reset_url: Load New %{language} URL
+      edit:
+        change_video_url: Change %{language} Video URL
+        datasources_header: Data Sources
+        add_datasource: Add Data Source
+    datasource_fields:
+      remove_link: Remove Data Source
+  notifications:
+    index:
+      title: Notifications
+      explain: "You can recieve email notifications whenever a visualization is added to feradi.info.  Simply sign in via Facebook or sign up with feradi.info to subscribe."
+      all_sub_title: All Notifications
+      all_label: Do you want to recieve any notifications from this site?
+      all_no: "No, do not send me any notifications."
+      all_yes: "Yes, I want notifications sent to me."
+      visual_comment_sub_title: New Visualization Comment Notifications for %{org}
+      visual_comment_label: "Do you want to recieve notifications when a comment is made to your organization's visualizations?"
+      visual_comment_no: "No, do not send me any notifications."
+      visual_comment_yes: "Yes, I want notifications sent to me."
+      new_visuals_sub_title: New Visualization Notifications
+      new_visuals_all: Notify me when any visualization is added.
+      new_visuals_none: I do not want to receive notifications when a new visualization is added.
+      new_visuals_by_category: "Notify me when a visualization is added to:"
+      new_ideas_sub_title: New Idea Notifications
+      new_ideas_all: Notify me when any idea is added.
+      new_ideas_none: I do not want to receive notifications when a new idea is added.
+      new_ideas_by_category: "Notify me when an idea is added to:"
+      language_sub_title: Notification Language
+      language_label: In what language do you want to receive the notifications?
+  ideas:
+    index:
+      title: Post Ideas
+      meta_description: "Have an idea for a news story? Wish the media would report on an issue that is important to you? Don't have the time or skills to do it yourself? Post your idea here. If it is a good one, chances are, a journalist will work on it."
+      text_ideas1: "Have an idea for a news story? Wish the media would report on an issue that is important to you? Don't have the time or skills to do it yourself? Post your idea here. If it is a good one, chances are, a journalist will work on it."
+      text_ideas2: "feradi.info makes your ideas social, allowing missed opportunities to become a treasure trove of journalistic brainstorming. Post, vote, share, and watch how ideas take shape and become the news."
+      sign_in: Sign In to Post
+    user:
+      title: "Ideas by: %{name}"
+    category:
+      title: "Category: %{name}"
+    explore:
+      title: "Explore Ideas"
+    show:
+      title: "Idea #%{number}"
+      idea_by: "Idea by %{name}"
+      claimed_by: "Idea Being Worked On"
+      finished: Finished
+      news_url: View Story
+      take_ownership: "Work on Idea (%{org})"
+      progress_update: Add
+#      progress_update: Add Update
+      edit_progress: Edit
+#      edit_progress: Edit#Edit Progress
+      translate_idea: Translate the Idea
+      translate_org_progress: Translate the Text
+      inappropriate_idea: "This idea has been reported as inappropriate and is no longer available."
+      status: Status
+    search:
+      title: "Search: %{q}"
+    edit:
+      title: "Edit Idea #%{number}"
+    progress:
+      form:
+        title_claim: Claim Idea
+        title_progress_update: Progress Update
+        title_edit_progress: Edit Progress
+        title_error: Error
+        error: The requested Idea and/or Organization could not be found.
+    report:
+      form:
+        title_old: Report Inappropriate Idea
+        title: What is the reason for the report?
+        inappropriate: Inappropriate Content
+        duplicate: Duplicate Idea
+        duplicate_reason: "Which idea is this a duplicate of? (Provide URL)"
+        success: The Idea hs been reported.

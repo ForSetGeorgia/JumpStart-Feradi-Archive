@@ -1,0 +1,93 @@
+<div id="post_idea">
+
+  <div class="negative-margin">
+
+    <div id="ideas_index_header">
+      <% after_title = ''
+         if !user_signed_in?
+           after_title << link_to(t('.sign_in'), :new_user_session, :class => 'title_link', :id => 'ideas_form_signin')
+         end
+       %>
+		  <% title_after after_title.html_safe if after_title.present? %>
+      <%= page_title t('app.common.post_idea') %>
+    </div>
+    <div class="row-fluid top">
+      <div class="span4">
+
+        <div id="navbar-idea-form">
+	        <%= form_tag create_idea_path, :method => :post, :id => "form_new_idea" do %>
+            <% if user_signed_in? %>
+	            <%= hidden_field_tag 'idea_user_id', current_user.id, :name => 'idea[user_id]' %>
+            <% end %>
+            <ul>
+              <li class="title">
+            		<span id="form_title"><%= t('app.common.post_idea') %></span>
+              </li>
+              <li class="clear">
+		            <label class="control-label" for="idea_idea_categories_attributes_0_category_id">
+			            <%= t('activerecord.attributes.idea_category.category_id') %>
+		            </label>
+		            <div class="control-group">
+		              <%= select_tag 'idea_category_ids', options_from_collection_for_select(@categories, "id", "name"), :name => 'idea[category_ids][]', :multiple => true, :size => 1, :style => 'display: none;' %>
+		            </div>
+              </li>
+              <li class="clear">
+		            <label class="control-label" for="idea_explaination">
+			            <%= t('activerecord.attributes.idea.explaination') %>
+		            </label>
+		            <div class="control-group">
+		              <%= text_area_tag 'idea_explaination', nil, :rows => 2, :name => 'idea[explaination]' %>
+		            </div>
+              </li>
+              <li class="clear">
+	                <div class="control-group">
+                    <% if user_signed_in? && current_user.role?(User::ROLES[:org_admin])%>
+		                  <div class="left">
+		                    <input type="hidden" name="idea[is_public]" value="0" />
+                        <label title="<%= t('app.common.is_public_explanation') %>">
+                          <input type="checkbox" name="idea[is_public]" value="1" checked="checked" title="<%= t('app.common.is_public_explanation') %>" />
+                          <%= t('activerecord.attributes.idea.is_public') %>
+                        </label>
+		                  </div>
+                    <% end %>
+                  <div class="right">
+	                  <%= submit_tag t('helpers.links.post_idea')%>
+                  </div>
+		            </div>
+              </li>
+            </ul>
+	        <% end %>
+        </div>
+
+      </div>
+      <div class="span6">
+        <div id="ideas_text">
+          <p>
+            <%= t('.text_ideas1') %>
+          </p>
+          <p>
+            <%= t('.text_ideas2').sub('feradi.info', '<span style="color: #469e72;">feradi</span><span style="color: #f86c5c;">.info</span>').html_safe %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+  <%= render "shared/ideas_filter_bar" %>
+
+  <div id="idea_list" class="viz">
+    <%= render @view_type %>
+  </div>
+
+  <a id="load_more_link" href="#" style="display: none;"><%= t('helpers.links.more') %></a>
+
+  <div class="hide_for_crawler"><%= link_to all_ideas_path, all_ideas_path %></div>
+</div>

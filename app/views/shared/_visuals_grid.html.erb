@@ -1,0 +1,78 @@
+<% @visualizations = [] if !@visualizations.present? %>
+
+  <% if !@ajax_call %>
+    <div class="grid_items clear">
+  <% end %>
+    <!--<div class="grid_visualization_row clear">-->
+
+    <div id="throbber">
+      <img src="/assets/throbber.svg" />
+    </div>
+
+    <% Globalize.with_locale(@language) do %>
+    	<% @visualizations.each_with_index do |visualization, index| %>
+
+        <%
+          visualization.visualization_locale = @language
+
+          if visualization.type == :gifographic
+            gifographic_mod_class = 'mod-gifographic'
+          else
+            gifographic_mod_class = ''
+          end
+        %>
+    		  <div class="visualization-item mod-grid js-vis-stay-visible">
+    		    <%= render partial: 'shared/visual_item_image', 
+                       locals: {
+                         visualization: visualization,
+                         user_in_org: @user_in_org
+                       }
+            %>
+    		    <div class="title">
+    		      <h2><%= link_to visualization.title, create_visual_path(visualization.permalink, @user_in_org, params[:org]), :title => visualization.title %></h2>
+    					<% if !visualization.published %>
+    					<div class="not_published"><%= t('app.common.not_published') %></div>
+    					<% end %>
+    					<div class="item_footer clear">
+                <ul>
+                  <li>
+                    <span class="heart" title="<%= t('filters.visuals.organize.likes')%>">❤</span>
+                    <%= visualization.overall_votes %>
+                  </li>
+                  <li>
+                    <%= image_tag('view_icon12.png', :alt => t('filters.visuals.organize.views'), :title => t('filters.visuals.organize.views')) %>
+                    <%= visualization.impressions_count %>
+                  </li>
+                  <li>
+                    <%= image_tag('comments_icon12.png', :alt => t('app.common.comments'), :title => t('app.common.comments')) %>
+                    <%= visualization.fb_count %>
+                  </li>
+                </ul>
+    					</div>
+    					<% if @user_in_org && current_user.role?(User::ROLES[:org_admin]) && params[:org].present? %>
+    						<div>
+    					    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+    					                edit_organization_visualization_path(params[:org], visualization.permalink),
+    													:class => 'btn btn-mini' %>
+    					    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+    					                organization_visualization_path(params[:org], visualization.permalink),
+    					                :method => :delete,
+    													:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
+    					                :class => 'btn btn-mini btn-danger' %>
+    						</div>
+    					<% end %>
+    		    </div>
+    		  </div>
+
+    		<% if false && (index + 1) % 4 == 0 %>
+    		  </div>
+          <div class="grid_visualization_row clear">
+    		<% end %>
+    	<% end %>
+    <% end %>
+
+  	<!--</div>-->
+
+  <% if !@ajax_call %>
+    </div>
+  <% end %>

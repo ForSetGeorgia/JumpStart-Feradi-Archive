@@ -1,0 +1,668 @@
+# encoding: utf-8
+ka:
+  activerecord:
+    models:
+      user: მომხმარებელი
+      category: კატეგორია
+      organization: ორგანიზაცია
+      visualization: ვიზუალიზაცია
+      page: გვერდი
+      message: შეტყობინება
+      datasource: მონაცემთა წყარო
+      idea: იდეა
+      idea_inappropriate_report: რეპორტი
+      idea_status: იდეის სტატუსი
+      idea_progress: პროგრესი
+    attributes:
+      user:
+        email: ელ. ფოსტა
+        password: პაროლი
+        password_confirmation: გაიმეორეთ პაროლი
+        role: როლი
+        remember_me: დამიმახსოვრე
+        nickname: "მომხმარებლის სახელი"
+      message:
+        name: სახელი
+        phone: ტელეფონი ნომერი
+        email: ელ.ფოსტის მისამართი
+        message: შეტყობინება
+        what_is_data: მოკლედ აღწერეთ თქვენთვის სასურველი ვიზუალიზაციის მონაცემები
+        why_visualize: რატომ გსურთ ამ მონაცემების ვიზუალიზაცია?
+        datasource: რა არის მონაცემთა წყარო?
+        file: დაურთეთ მონაცემთა ფაილი
+        how_use: რატომ გსურთ feradi.info-ს გამოყენება თქვენი ვიზუალიზაციების გამოსაქვეყნებლად?
+        organization: ორგანიზაცია
+      category:
+        icon: ხატულა
+      category_translation:
+        name: სახელი
+      organization:
+        logo: ლოგო
+        url: ვებ-გვერდი
+      organization_translation:
+        name: სახელი
+        bio: ჩვენ შესახებ
+        permalink: ბმულის სახელი
+        permalink_hint: "თუ გსურთ ბმულის ახალი სახელის შექმნა წაშალეთ არსებული ტექსტი და შეინახეთ ახალი ჩანაწერი. ეს ოპერაცია განახორციელეთ ყველა ენაზე."
+      organization_user:
+        is_active: აქტიური
+        user_id: მომხმარებელი
+        organization_id: ორგანიზაცია
+      page:
+        name: სახელი
+      page_translation:
+        title: სათაური
+        description: შინაარსი
+      visualization:
+        published_date: გამოქვეყნების თარიღი
+        published: გსურთ გამოქვეყნება?
+        visualization_type_id: ვიზუალიზაციის ტიპი
+        individual_votes: ინდივიდუალური ხმები
+        overall_votes: ხმების საერთო რაოდენობა
+        dataset: მონაცემები
+#        visual: ვიზუალური ფაილი
+        visualization_categories: კატეგორიები
+        is_promoted: მთავარ გვერდზე დაწინაურება?
+        promoted_at: დაწინაურების თარიღი
+        languages: ენები
+        languages_internal: ენები
+        reset_languages: ენის შეცვლა
+      visualization_translation:
+        title: სათაური
+        permalink: ბმულის სახელი
+        permalink_hint: "თუ გსურთ ბმულის ახალი სახელის შექმნა წაშალეთ არსებული ტექსტი და შეინახეთ ახალი ჩანაწერი. ეს ოპერაცია განახორციელეთ ყველა ენაზე."
+        explanation: აღწერა
+        visualization_text: ტექსტი ვიზუალიზაციიდან
+        visualization_text_hint: ტექსტი ვიზუალიზაციიდან, რომელიც ხელმისაწვდომი უნდა იყოს საძიებო სისტემებისთვის.
+        reporter: "ჟურნალისტი (სახელი, ორგანიზაცია)"
+        designer: "დიზაინერი (სახელი, ორგანიზაცია)"
+        developer: "დეველოპერი (სახელი, ორგანიზაცია)"
+        interactive_url: ინტერაქტიული ვიზუალიზაციის ბმული
+        researcher: "მკვლევარი (სახელი, ორგანიზაცია)"
+        narrator: "მთხრობელი (სახელი, ორგანიზაცია)"
+        producer: "პროდიუსერი (სახელი, ორგანიზაცია)"
+        director: "რეჟისორი (სახელი, ორგანიზაცია)"
+        writer: "სცენარისტი (სახელი, ორგანიზაცია)"
+        sound_music: "მუსიკა / ხმის დიზაინერი (სახელი, ორგანიზაცია)"
+        designer_animator: "დიზაინერი / ანიმატორი (სახელი, ორგანიზაცია)"
+        interactive_url: ინტერაქტიული ვიზუალიზაციის ბმული
+        video_url: ვიდეოს ბმული
+        video_embed: ვიდეო
+      image_file:
+        file: ვიზუალის ფაილი
+        reset_crop: ესკიზის განახლება
+        reset_file: ახალი ფაილის ჩატვირთვა
+        reset_url: ბმულისთვის სკრინშოტის ხელახლა გადაღება
+      dataset_file:
+        file: მონაცემების ფაილი
+      datasource:
+        name: მონაცემთა წყაროს სახელი
+        url: მონაცემთა წყაროს ბმული
+      idea:
+        user_id: მომხმარებელი
+        explaination: აღწერა
+        created_at: თარიღი
+        individual_votes: თითოეული ხმა
+        overall_votes: ხმების სრული რაოდენობა
+        is_duplicate: დუბლირებული?
+        is_inappropriate: არ შეესაბამება
+        is_public: საჯაროა?
+        current_status_id: მიმდინარე სტატუსი
+      idea_category:
+        idea_id: იდეა
+        category_id: კატეგორია
+      idea_progress:
+        idea_id: იდეა
+        organization_id: ორგანიზაცია
+        is_completed: სიახლე დასრულებულია?
+        url: სიახლის ბმული
+        progress_date: თარიღი
+        explaination: აღწერა
+        idea_status_id: სტატუსი
+        idea_status: სტატუსი
+        is_public: საჯაროა?
+      idea_inappropriate_report:
+        user_id: მომხმარებელი
+        idea_id: იდეა
+        reason: რატომ არ შეესაბამება იდეა?
+      idea_status:
+        sort: დახარისხება
+        sort_hint: "1, 2, 3, etc. (ascending order)"
+        is_published: გამოქვეყნდა?
+        is_published_hint: ეს სტატუსი გამოხატავს, რომ იდეა გამოქვეყნდა
+      idea_status_translation:
+        name: სახელი
+    messages:
+      idea_progress:
+        success: "ჩანაწერები წარმატებით შეინახა."
+    errors:
+      messages:
+        published_visual_missing_fields: "სავალდებულოა, როდესაც ვიზუალი გამოქვეყნდება."
+        contact_missing_fields: "არ დატოვოთ ცარიელი"
+        send_data_missing_fields: "არ დატოვოთ ცარიელი"
+        submit_visual_missing_fields: "არ დატოვოთ ცარიელი"
+        required_field: "სავალდებულოა"
+        already_exists: 'უკვე არსებობს მონაცემთა ბაზაში'
+  activemodel:
+    errors:
+      models:
+        message:
+          attributes:
+            email:
+              invalid: "ელ.ფოსტის მისამართი არ უნდა იყოს ცარიელი"
+            message:
+              blank: "შეტყობილების ველი არ უნდა იყოს ცარიელი"
+  mailer:
+    closing: "პატივისცემით,"
+    signature: feradi.info
+    unsubscribe: გამოწერის გაუქმება
+    notification:
+      new_user:
+        subject: "კეთილი იყოს თქვენი მობრძანება feradi.info-ზე!"
+        message: "მადლობას გიხდით feradi.info-ზე გაწევრიანებისთვის. ამით თქვენ ეხმარებით ახალი ფერადი ამბების შექმნას. თქვენ შეგიძლიათ მართოთ feradi.info-სგან მიღებული ელექტრონული წერილები შემდეგი ბმულის საშუალებით."
+      new_visualization:
+        subject: "feradi.info-ს ახალი ვიზუალიზაცია დაემატა!"
+        message: "ახალი ვიზუალიზაცია სახელად '%{title}' დაემატა. ვიზუალის აღწერა:"
+      new_visualization_needs_promotion:
+        subject: "ახალი ვიზუალიზაცია დაემატა feradi.info-ს და სჭირდება განხილვა მთავარ გვერდზე დასაწინაურებლად"
+        message: "ახალი ვიზუალიზაცია სახელად '%{title}' დაემატა. ვიზუალის აღწერა:"
+      visualization_comment:
+        subject: "feradi.info-ზე თქვენ მიერ განთავსებულ ვიზუალიზაციაზე დატოვა '%{title}' დააკომენტარა."
+        message: "გთხოვთ, კომენტარის სანახავად მიჰყვეთ შემდეგ ბმულს."
+      visualization_promoted:
+        subject: "თქვენი ვიზუალიზაცია '%{title}'  დაწინაურდა  feradi.info-ს მთავარ გვერდზე!"
+        message: "გილოცავთ! feradi.info-მ თქვენი ვიზუალიზაცია განათავსა მთავარ გვერდზე."
+      idea_claimed_owner:
+        subject: "%{organization} დაინტერესებულია თქვენი იდეით!"
+        message: "%{organization} გამოეხმაურა თქვენს იდეას.  მათ დაწერეს:"
+      idea_progress_update_owner:
+        subject: "%{organization} თქვენი იდეიის პროგრესი განახლებულია"
+        message: "%{organization} თქვენს იდეაზე მოსაზრება განაახლეს.  მათ დაწერეს:"
+      idea_realized_owner:
+        subject: "%{organization} თქვენს იდეაზე მუშაობა დაასრულეს!"
+        message: "%{organization} თქვენი იდეის შესახებ სიახლე გამოაქვეყნეს. მათ დაწერეს:"
+      idea_comment_owner:
+        subject: "კომენტარი თქვენს იდეაზე"
+        message: "კომენტარის სანახავად მიყევით ბმულს."
+      new_idea_subscriber:
+        subject: "დამატებულია ახალია იდეა"
+        message: "ახალი იდეა:"
+      idea_claimed_subscriber:
+        subject: "%{organization} ასევე დაინტერესებულია ამ იდეით"
+        message: "%{organization} გამოეხმაურა იდეას, რომლითაც თქვენ ხართ დაინტერესებული. მათ დაწერეს:"
+      idea_progress_update_subscriber:
+        subject: "%{organization} განაახლა პროგრესი იდეაზე, რომლითაც თქვენ ხართ დაინტერესებული. "
+        message: "%{organization} განაახლა გამოხმაურება  იდეაზე რომლითაც თქვენ ხართ დაინტერესებული. მათ დაწერეს:"
+      idea_realized_subscriber:
+        subject: "%{organization} დაასრულა მუშაობა იდეაზე რომლითაც თქვენ ხართ დაინტერესებული!"
+        message: "%{organization}გამოაქვეყნა სიახლე იდეაზე, რომლითაც თქვენ ხართ დაინტერესებული. მათ დაწერეს:"
+      idea_comment_subscriber:
+        subject: "კომენტარი იდეაზე რომლითაც თქვენ ხართ დაინტერესებული."
+        message: "ლინკის სანახავად მიყევით ბმულს."
+    contact:
+      contact_form:
+        subject: "feradi.info დაგვიკავშირდი"
+      submit_visual:
+        subject: "feradi.info ვიზუალური ფორმის წარდგენა"
+      send_data:
+        subject: "feradi.info მონაცემთა ფორმის გაგზავნა"
+      print_message:
+        intro: 'მინდა მაღალი გაფართოების საბეჭდი ფაილი შემდეგი ინფოგრაფიკისთვის: "%{vis_name}"'
+        purpose: "მიზანი: (გთხოვთ, გვითხრათ, როგორ აპირებთ ამ საბეჭდი ფაილის გამოყენებას)"
+        desired_size: "სასურველი ზომა (არასავალდებულო):"
+        other_info: "დამატებითი ინფორმაცია (არასავალდებულო):"
+  helpers:
+    actions: აირჩიეთ
+    links:
+      admin: ადმინისტრატორის განყოფილება
+      edit: შეცვლა
+      confirm: დარწმუნებული ხართ?
+      destroy: წაშლა
+      new: ახალი
+      back: იხილეთ სრულად
+      list: იხილეთ სრულად
+      cancel: გაუქმება
+      reset: საწყის კონფიგურაციაზე დაბრუნება
+      sign_in2: სისტემაში შესვლა
+      sign_in: უკვე გაქვთ ანგარიში?
+      sign_up2: რეგისტრაცია
+      sign_up: არ გაქვთ ანგარიში ჯერ?
+      sign_out: გასვლა
+      website: ვებ-გვერდის ნახვა
+      forgot_password: დაგავიწყდათ პაროლი?
+      password_reset: პაროლის აღდგენის ინსტრუქციის გაგზავნა
+      sign_in_provider: "სისტემაში შესვლა %{provider}"
+      download: ჩამოტვირთვა
+      existing_file: არსებული ფაილის ნახვა
+      more: ვრცლად
+      org_profile: "%{org} - გვერდი"
+      edit_org: "%{org} - რედაქტირება"
+      new_visual: "%{org} - ატვირთეთ ვიზუალი"
+      post_idea: იდეის გამოქვეყნება
+      report_inappropriate: დაარეპორტე შეუსაბამო იდეა
+      follow_idea: მიყევი
+      unfollow_idea: აღარ მიყვე
+      promote: მთავარ გვერდზე დაწინაურება
+      unpromote: მთავარი გვერდიდან წაშლა
+    titles:
+      new: "ახალი %{model}"
+      edit: "შეცვლა %{model}"
+  visualization_types:
+    infographic: ინფოგრაფიკა
+    interactive: ინტერაქტივი
+    fact: ფაქტი
+    comic: კომიქსი
+    video: ვიდეო
+    gifographic: გიფოგრაფიკა
+  multiselect:
+    checkAllText: 'ყველას მონიშვნა'
+    uncheckAllText: 'მონიშვნის მოხსნა'
+    noneSelectedText: '' #'მონიშვნის პარამეტრები'
+    selectedText: 'მონიშნულთა #'
+  filters:
+    category_default: qkhvela
+    visuals:
+      type:
+        header: ტიპი
+        all: ყველა
+        infographic: ინფოგრაფიკა
+        interactive: ინტერაქტივი
+        fact: ფაქტი
+        comic: კომიქსი
+        video: ვიდეო
+        gifographic: გიფოგრაფიკა
+        not_published: გამოუქვეყნებელი
+        not_promoted: არ დაწინაურდა
+      view:
+        header: განლაგება
+        grid: ბადე
+        list: სია
+      organize:
+        header: დახარისხება
+        recent: ბოლო
+        likes: მოწონება
+        views: ნახვა
+      language:
+        header: ენა
+    ideas:
+      view:
+        header: განლაგება
+        grid: ბადე
+        list: სია
+      organize:
+        header: დახარისხება
+        recent: ბოლო
+        likes: მოწონება
+        views: ნახვა
+      filter:
+        header: გაფილტვრა
+        all: ყველა
+        not_selected: არ დაწყებულა მუშაობა
+        in_progress: მიმდინარეობს
+        completed: განხორციელებული
+  app:
+    language:
+      en: English
+      ka: ქართული
+      hy: Հայերեն
+    language_abbreviation:
+      en: EN
+      ka: ქა
+      hy: Հայ
+    buttons:
+      back: უკან
+      list: იხილეთ სრულად
+      admin: ადმინისტრატორის განყოფილება
+      delete: წაშლა
+      edit: შეცვლა
+      show: ჩვენება
+      cancel: გაუქმება
+      update: განახლება
+      save: შენახვა
+      create: შექმნა
+      reset: საწყის კონფიგურაციაზე დაბრუნება
+      remove: მოშორება
+      confirm: დარწმუნებული ხართ?
+      new: ახალი
+    common:
+      app_name: feradi.info
+      placeholder: placeholder # do not translate
+      comments: კომენტარები
+      comments_noun: კომენტარი
+      likes: მოწონება
+      like: მომწონს
+      unlike: აღარ მომწონს
+      share: გააზიარეთ
+      not_published: გამოუქვეყნებელი
+      author: ავტორები
+      category: კატეგორია
+      rating: შეფასება
+      rate_it: შეაფასე!
+      top_ideas: ტოპ იდეები
+      new_ideas: ახალი იდეები
+      in_progress: მიმდინარეობს
+      realized: განხორციელებული იდეები
+      post_idea: გამოაქვეყნე შენი იდეა
+      search: ძიება
+      follow_idea: თქვენ მიიღებთ ელექტრონულ შეტყობინებას  იდეისთან დაკავშირებით სიახლეებზე.
+      follow_idea_bad: იდეა ვერ მოიძებნა
+      unfollow_idea: თქვენ არ მიიღებთ ელექტრონულ შეტყობინებებს სიახლეებზე.
+      unfollow_idea_bad: იდეა ვერ მოიძებნა.
+      is_private: არასაჯარო
+      last_update:  ბოლო განახლება
+      is_public_explanation: "იდეა საჯაროა და მისი ნახვა ყველას შეუძლია. გააუქმეთ მონიშვნა, თუ გსურთ, რომ მას მხოლოდ თქვენი ორგანიზაციის წევრები ხედავდნენ."
+      article_169: "უთხარი “არა” 169-ე მუხლს! მხარი დაუჭირე გამოხატვის თავისუფლებას!"
+      language: ენა
+      submit: Submit
+    msgs:
+      does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
+      not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
+      permalink_exists: უკვე არსებობს მონაცემთა ბაზაში
+      success_created: "%{obj} შექმნილია."
+      success_updated: "%{obj} განახლებულია."
+      success_deleted: "%{obj} წარმატებით წაიშალა."
+      notification_yes: თქვენ მიიღებთ შეტყობინებებს.
+      notification_no: თქვენ არ მიიღებთ შეტყობინებებს.
+      notification_new_visual_all_success: თქვენ მიიღებთ ვიზუალიზაციის დამატების შეტყობინებას
+      notification_new_visual_none_success: თქვენ არ მიიღებთ ვიზუალიზაციის დამატების შეტყობინებას
+      notification_new_visual_by_category_success: "თქვენ მიიღებთ  ვიზუალიზაციის შემდეგ კატეგორიებში დამატების შეტყობინებას:%{categories}."
+      notification_new_idea_all_success: თქვენ მიიღებთ შეტყობინებას ყოველი  ახალ იდეის გამოქვეყნების შემდეგ.
+      notification_new_idea_none_success: თქვენ არ მიიღებთ შეტყობინებას ყოველი  ახალ იდეის გამოქვეყნების შემდეგ .
+      notification_new_idea_by_category_success: "თქვენ მიიღებთ შეტყობინებას შემდეგი კატეგორიების ამორჩევის შემთხვევაში: %{categories}."
+      notification_visual_comments_yes: თქვენ მიიღებთ შეტყობინებას თქვენ მიერ განთავსებული ვიზუალიზაციაზე კომენტარის დამატების შესახებ %{org}
+      notification_visual_comments_no: თქვენ არ მიიღებთ შეტყობინებას თქვენ მიერ განთავსებული ვიზუალიზაციაზე კომენტარის დამატების შესახებ %{org}.
+      notification_language: თქვენ მიიღებთ შეტყობინებას %{language}.
+      no_visual_records: თქვენი მოთხოვნის შესაბამისი ვიზუალიზაცია არ მოიძებნა.
+      no_idea_records: თქვენი მოთხოვნის შესაბამისი იდეა არ მოიძებნა.
+      visual_promoted: ვიზუალიზაცია დაწინაურდა მთავარ გვერდზე.
+      visual_unpromoted: ვიზუალიზაცია აღარ გამოჩნდება მთავარ გვერდზე.
+  layouts:
+    application:
+      menu_visual: ვიზუალიზაციები
+      menu_data: მონაცემების გაგზავნა
+      menu_idea: იდეები
+      menu_submit_visual: ვიზუალის გაგზავნა
+      menu_about: ჩვენ შესახებ
+      menu_contact: დაგვიკავშირდი
+      admin: ადმინისტრატორი
+      analytics: ანალიტიკა
+      user_profile: შენი გვერდი
+      notifications: შეტყობინებები
+      facebook: Facebook
+      twitter: Twitter
+      rss: RSS
+      pinterest: Pinterest
+      subscription: ელ.ფოსტის გამოწერა
+      sign_out: გასვლა
+      terms: მომსახურების პირობები
+      js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
+      js_link_text: აგებულია
+    interactive:
+      go_back: უკან დაბრუნება
+    unsupported_browser:
+      title: არასათანადო ბრაუზერი
+      p1: სამწუხაროდ თქვენი ინტერნეტ ბრაუზერის მოხმარების ვადა გასულია და ვერ მოხდება ვებ-გვერდთან სრულად დაკავშირება.
+      p2: არსებობს რამდენიმე უფასო ბრაუზერი რომელის გადმოწერის შემდეგ შეძლებთ ვებ-გვერდით სარგებლობას.
+      chrome: Chrome
+      firefox: Firefox
+      ie: Internet Explorer (მხოლოდ Windows-ზე)
+      opera: Opera
+      Safari: Safari
+      admin: ადმინისტრატორი
+      sign_out: გასვლა
+      terms: მომსახურების პირობები
+      js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
+      js_link_text: აგებულია
+  admin:
+    index:
+      title: ადმინისტრატორის განყოფილება
+      categories: კატეგორიები
+      organizations: ორგანიზაციები
+      visualizations: ვიზუალიზაციები
+      users: მომხმარებლები
+      pages: გვერდები
+      idea_statuses: იდეის სტატუსი
+      analytics: ანალიტიკა
+    users:
+      edit:
+        title: ცვლილებების შეტანა მომხმარებლის გვერდზე
+      index:
+        title: მომხმარებლები
+      new:
+        title: ახალი მომხმარებელი
+      show:
+        title: მომხმარებლის დეტალები
+    analytics:
+      index:
+        title: ანალიტიკა
+        nav:
+          prompt: ჩართულობის ნახვა
+          visualization: ვიზუალიზაცია
+          category: კატეგორია
+          visualization_type: ვიზუალიზაციის ტიპი
+      engagement_tables:
+        export_button: ჩამოტვირთვა CSV-ის ფორმატით
+        columns:
+          views: ნახვა
+          number_visualizations: რაოდენობა
+          facebook_shares: ფეისბუქზე გაზიარება
+          facebook_engagement_rating: ფეისბუქის ჩართულობის რეიტინგი
+          feradi_likes: ფერადის მოწონება
+          feradi_engagement_rating: ფერადის ჩართულობის რეიტინგი
+          overall_engagement_rating: ზოგადი ჩართულობის რეიტინგი
+        visuals:
+          heading: ჩართულობა
+          columns:
+            title: ვიზუალიზაცია
+            publication_date: გამოქვეყნების თარიღი
+        categories:
+          heading: ჩართულობა კატეგორიების მიხედვით
+          columns:
+            category_name: კატეგორია
+        visual_types:
+          heading: ჩართულობა ვიზუალიზაციის ტიპების მიხედვით
+          columns:
+            visual_type: ვიზუალიზაციის ტიპი
+  root:
+    index:
+      title: ვიზუალიზაციები
+      header_get_involved: ჩაერთეთ!
+      header_ideas: იდეები
+      header_visuals: ვიზუალები
+      header_data: მონაცემები
+      text_get_involved: "თუ ხართ დაინტერესებული მონაცემთა შესწავლითა და ვიზუალიზაციით, ან გაქვთ საინტერესო კითხვები, რომელზეც შეგვიძლია, ვიზუალურად გამოსახული პასუხი გაგცეთ, შემოგვიერთდით!"
+      text_ideas: "გაქვთ იდეა ახალი ამბისთვის? გსურთ, მედიამ გააშუქოს თქვენთვის საინტერესო საკითხი? გამოაქვეყნეთ თქვენი იდეა აქ. თუ იდეა კარგია, დიდი შანსია, ჟურნალისტმა მასზე იმუშაოს."
+      text_visuals: "თქვენც შეგიძლიათ გამოსახოთ თქვენი იდეები ვიზუალურად. დარეგისტრირდით, შექმენით და გაგვიზიარეთ ვიზუალიზაციები თქვენი ან თქვენი ორგანიზაციის სახელით."
+      text_data: "თუ თქვენ ან თქვენი ორგანიზაცია ფლობთ საზოგადოებისთვის საინტერესო მონაცემებს და გსურთ მათი ვიზუალიზაცია, გთხოვთ, გამოგვიგზავნეთ მონაცემები."
+      button_ideas: იდეის გამოქვეყნება
+      button_visuals: რეგისტრაცია
+      button_data: მონაცემების გაგზავნა
+    about:
+      title: ჩვენ შესახებ
+      meta_description: |
+        რა არის მონაცემთა ჟურნალისტიკა?
+        ჩვენ ვაკეთებთ მონაცემთა ჟურნალისტიკას!
+        ჩვენ ვიზუალურად გამოვსახავთ ახალ ამბებს
+        მონაცემთა მოპოვება
+        ჩვენ ვეძებთ მონაცემებს სხვადასხვა საჯარო და კერძო ორგანიზაციებთან. როცა მონაცემები არ არის ხელმისაწვდომი, ჩვენ გამოვითხოვთ მას. როცა მონაცემები არ არსებობს, ჩვენ ვქმნით მას.
+        მონაცემთა ანალიზი
+        ჩვენ ვუყურებთ და ვაანალიზებთ მონაცემებს სხვადასხვა კუთხიდან, ვაკვირდებით მათ თანაფარდობებსა და ურთიერთმიმართებებს. ჩვენ აღმოვაჩენთ ამბებს.
+        მონაცემთა ვიზუალურად გამოსახვა
+        ვიზუალიზაცია მონაცემებს უნიკალურ პერსპექტივას ანიჭებს.
+        ჩვენ ვაფერადებთ ინფორმაციას ამბების ვიზუალურად გამოსახვითა და სხვადასხვა საშუალების გამოყენებით.
+        თითოეული ამბის ვიზუალურად გამოსახვისას ჩვენ ვიყენებთ იმ საშუალებას, რაც სხვებზე უკეთესია. ყველაზე მნიშვნელოვანი სწორედ ასეთი საშუალების არჩევაა.
+        გამოქვეყნება/გაზიარება
+        ჩვენ ვიზუალიზაციებს ვაქვეყნებთ ვებგვერდზე - ისე, რომ სხვებმაც გამოიყენონ, გიზიარებთ თქვენ და ვიმედოვნებთ, რომ თქვენ სხვებსაც გაუზიარებთ.
+        45%-ით მეტი ინტერნეტმომხმარებელი გადავა ბმულზე, თუკი იგი ინფოგრაფიკას შეიცავს
+        მათგან 30% გააზიარებს ბმულს იმ შემთხევაშიც კი, თუ ინფორმაცია უმიზნოა
+        ადამიანთა 40% ვიზუალურ ინფორმაციას უკეთ აღიქვამს, ვიდრე ტექსტს
+        90% ინფორმაციისა, რომელიც ტვინამდე აღწევს, ვიზუალურია
+    data:
+      title: მონაცემების გაგზავნა
+      meta_description: "ფლობთ მონაცემებს და გსურთ მათი ვიზუალიზაცია, თუმცა არ გაქვთ საკმარისი დრო ან ტექნიკური ცოდნა? გაგვიზიარეთ თქვენი მონაცემები აქ. თუ ეს მონაცემები საინტერესო აღმოჩნდება, ჩვენ გამოვსახავთ მათ ვიზუალურად და ამ ვიზუალიზაციის გამოყენებას შეძლებთ თქვენც. მონაცემების გაზიარებით თქვენ ხდებით ერთი დიდი საზოგადოების წევრი, სადაც ყველა წევრი რჩება მოგებული."
+      message_sent: თქვენი შეტყობინება გაგზავნილია! მადლობა რომ დაგვიკავშირდით.
+      send: გაგზავნა
+      name: სახელი
+      phone: ტელეფონის ნომერი
+      email: ელ.ფოსტის მისამართი
+      what_is_data: მოკლედ აღწერეთ თქვენთვის სასურველი ვიზუალიზაციის მონაცემები
+      why_visualize: რატომ გსურთ ამ მონაცემების ვიზუალიზაცია?
+      datasource: რა არის მონაცემთა წყარო?
+      file: დაურთეთ მონაცემთა ფაილი
+      email_us: მოგვწერეთ ელ. წერილი
+      email_subject: "feradi.info მონაცემთა მოთხოვნის გაგზავნა"
+    submit_visual:
+      title: ვიზუალის გაგზავნა
+      message_sent: თქვენი შეტყობინება გაგზავნილია! მადლობა რომ დაგვიკავშირდით.
+      send: გაგზავნა
+      name: სახელი
+      phone: ტელეფონის ნომერი
+      email: ელ.ფოსტის მისამართი
+      how_use: რატომ გსურთ თქვენი მონაცემების feradi.info-ს საშუალებით ვიზუალიზაცია?
+      email_us: მოგვწერეთ ელ.წერილი
+      email_subject: "feradi.info წარადგინეთ ვიზუალზე მოთხოვნა"
+    terms:
+      title: მომსახურების პირობები
+    rss:
+      title: RSS
+    contact:
+      title: დაგვიკავშირდით
+      meta_description: "თუ ხართ დაინტერესებული მონაცემთა ვიზუალიზაციით, მაგრამ არ იცით, როგორ გააკეთოთ ეს, დაგვიკავშირდით. მობრძანდით ჩვენს ოფისში, რათა გაგიზიაროთ ჩვენი ცოდნა და გამოცდილება და გახდით მონაცემთა ვიზუალიზაციის მოყვარულთა საზოგადოების ნაწილი."
+      message_sent: თქვენი შეტყობინება გაგზავნილია! მადლობა რომ დაგვიკავშირდით.
+      send: გაგზავნა
+      name: სახელი
+      email: ელ.ფოსტის მისამართი
+      message: შეტყობინება
+      address_map: მოძებნეთ ჩვენი ოფისი რუკაზე
+      email_us: გამოგვიგზავნეთ ელექტრონული წერილი
+      email_subject: "feradi.info საკონტაქტო ფორმა"
+      address: "შევჩენკოს ქ. 5, ბინა 2, 0108 თბილისი, საქართველო"
+      error_title: დაფიქსირდა შეცდომა
+  visuals:
+    index:
+      title: ვიზუალიზაციები
+      title_feed: "%{app_name} ვიზუალიზაციები"
+  shared:
+    visuals_show:
+      organization: ორგანიზაცია
+      reporter: ჟურნალისტი
+      designer: დიზაინერი
+      developer: დეველოპერი
+      researcher: მკველვარი
+      narrator: მთხრობელ
+      producer: პროდიუსერი
+      director: რეჟისორი
+      writer: სცენარისტი
+      sound_music: "მუსიკა / ხმის დიზაინერი"
+      designer_animator: "დიზაინერი / ანიმატორი"
+      data_source: მონაცემთა წყარო
+      data_set: მონაცემები
+      type: ტიპი
+      embed: ჩასასმელი კოდი
+      embed_link_title: დიდი გამოსახულების სანახავად დააჭირეთ
+      embed_link_interactive_title: ინტერაქტიული ვიზუალიზაციის სანახავად დააჭირეთ
+      comment_count: კომენტარები
+      gifographic_image_titles:
+        play: ჩართვა
+        stop: გამორთვა
+      print:
+        label: ბეჭდვა
+        question:
+          default: გსურთ ვიზუალიზაციის მაღალი რეზოლუციის საბეჭდი ფაილი?
+          infographic: გსურთ ინფოგრაფიკის მაღალი რეზოლუციის საბეჭდი ფაილი?
+          fact: გსურთ ფაქტის მაღალი რეზოლუციის საბეჭდი ფაილი?
+          comic: გსურთ კომიქსის მაღალი რეზოლუციის საბეჭდი ფაილი?
+        contact_us:  დაგვიკავშირდით!
+    visuals_filter_bar:
+      categories: კატეგორიები
+    ideas_list:
+      idea_title: "იდეა #%{number}"
+      no_ideas: იდეა არ მოიძებნა.
+    ideas_grid:
+      idea_title: "იდეა #%{number}"
+    ideas_form:
+      sign_in: გაიარეთ ავტორიზაცია
+  visualizations:
+    form:
+      locale_to_crop:
+        preview: ნახვა
+        crop_image: ესკიზის %{language} შექმნა
+      reset_visual_image_file:
+        reset_file:  ჩატვირთე ახალი %{language} ინფოგრაფიკა
+      reset_interactive_url:
+        reset_url: ჩატვირთე ახალი %{language} ბმული
+      edit:
+        change_video_url: "%{language} ვიდეოს ბმულის შეცვლა"
+        datasources_header: მონაცემთა წყაროები
+        add_datasource: მონაცემთა წყაროს დამატება
+    datasource_fields:
+      remove_link: მონაცემთა წყაროს წაშლა
+  notifications:
+    index:
+      title: შეტყობინებები
+      explain: "თქვენ მიიღებთ ვიზუალიზაციის  feradi.info-ზე დამატების შეტყობინებას ელ. წერილის სახით. სისტემაში შესვლა შეტყობინებების გამოსაწერად ხდება Facebook-ის ან feradi.info-ზე რეგისტრაციის გავლის მეშვეობით."
+      all_sub_title: ყველა შეტყობინება
+      all_label: გინდათ მიიღოთ შეტყობინება საიტიდან?
+      all_no: "არ გამომიგზავნო შეტყობინება."
+      all_yes: "დიახ, მინდა მივიღო შეტყობინებები."
+      visual_comment_sub_title: ახალ ვიზუალიზაციაზე კომენტარის დატოვების შეტყობინება %{org}
+      visual_comment_label: "გსურთ მიიღოთ თქვენი ორგანიზაციის ვიზუალიზაციაზე დატოვებული კომენტარის შეტყობინება?"
+      visual_comment_no: "არ გამომიგზავნო შეტყობინება."
+      visual_comment_yes: "დიახ, მინდა მივიღო შეტყობინებები."
+      new_visuals_sub_title: ახალი ვიზუალიზაციის შეტყობინება
+      new_visuals_all: შემატყობინე ახალი ვიზუალიზაციის დამატება.
+      new_visuals_none: არ შემატყობინოთ ახალი ვიზუალიზაციის დამატება.
+      new_visuals_by_category: "შემატყობინე ვიზუალიზაციის დამატება:"
+      new_ideas_sub_title: ახალი იდეის შეტყობინება
+      new_ideas_all: შემატყობინე ახალი იდეის დამატება
+      new_ideas_none: არ შემატყობინო ახალი იდეის დამატება.
+      new_ideas_by_category: "შემატყობინე როდესაც იდეა დაემატება:"
+      language_sub_title: შეტყობინების ენა
+      language_label: რომელ ენაზე გსურთ შეტყობინების მიღება?
+  ideas:
+    index:
+      title: იდეების გამოქვეყნება
+      meta_description: "გაქვთ იდეა ახალი ამბისთვის? გსურთ, მედიამ გააშუქოს თქვენთვის საინტერესო საკითხი? არ გაქვთ დრო ან საჭირო ცოდნა, თვითონ გააკეთოთ ეს? გამოაქვეყნეთ თქვენი იდეა აქ. თუ იდეა კარგია, დიდი შანსია, ჟურნალისტმა მასზე იმუშაოს."
+      text_ideas1: "გაქვთ იდეა ახალი ამბისთვის? გსურთ, მედიამ გააშუქოს თქვენთვის საინტერესო საკითხი? არ გაქვთ დრო ან საჭირო ცოდნა, თვითონ გააკეთოთ ეს? გამოაქვეყნეთ თქვენი იდეა აქ. თუ იდეა კარგია, დიდი შანსია, ჟურნალისტმა მასზე იმუშაოს."
+      text_ideas2: "feradi.info თქვენს იდეებს სოციალურს ხდის და საშუალებას აძლევს, ჟურნალისტური საქმიანობის განძად იქცეს. გამოაქვეყნეთ, შეაფასეთ, გააზიარეთ თქვენი იდეა და თვალყური მიადევნეთ, როგორ გარდაიქმნება იგი ახალ ამბად."
+      sign_in: გაიარეთ ავტორიზაცია
+    user:
+      title: "%{name} იდეა"
+    category:
+      title: "კატეგორია: %{name}"
+    explore:
+      title: "აღმოაცინე იდეა"
+    show:
+      title: "იდეა #%{number}"
+      idea_by: "%{name}-ის იდეა"
+      claimed_by: "იდეაზე მუშაობა დაიწყო"
+      finished: დასრულებული
+      news_url: იხილე ამბავი
+      take_ownership: "დაიწყე მუშაობა იდეაზე (%{org})"
+      progress_update: დამატება
+#      progress_update: დაამატე პროგრესი
+      edit_progress: შეცვლა
+#      edit_progress: შეცვალე პროგრესი
+      translate_idea: იდეის თარგმნა
+      translate_org_progress: ტექსტის თარგმნა
+      inappropriate_idea: "იდეა არ მოიძებნა."
+      status: სტატუსი
+    search:
+      title: "ძებნა: %{q}"
+    edit:
+      title: "იდეის რედაქტირება  #%{number}"
+    progress:
+      form:
+        title_claim: იდეაზე პასუხისმგებლობა
+        title_progress_update: პროგრესი
+        title_edit_progress: პროგრესის ცვლილება
+        title_error: შეცდომა
+        error: იდეა/ორგანიზაცია არ მოიძებნა
+    report:
+      form:
+        title_old: განაცხადე იდეის შესახებ
+        title: რა არის შეტყობინების მიზეზი?
+        inappropriate: შეურაცხმყოფელი შინაარსი
+        duplicate: გამეორებული შინაარსი
+        duplicate_reason: "რომელი იდეის შინაარსია აქ გამეორებული? (ჩასვით ბმული) "
+        success: იდეა დარეპორტდა.

@@ -1,0 +1,23 @@
+<% if !@page.nil? %>
+
+	<%# page_title @page.title %>
+	<% title @page.title %>
+
+	<%# simple_format(@page.description) %>
+
+	<div id="about_page" class="<%= "locale_#{I18n.locale}"%>">
+		<div id="hide_text">
+		<%= t('.meta_description') %>
+		</div>
+	</div>
+
+<% else %>
+	<%= page_title t('.title') %>
+<% end %>
+
+<% if user_signed_in? %>
+<div class="form-actions">
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_admin_page_path(@page), :class => 'btn' %>
+</div>
+<% end %>

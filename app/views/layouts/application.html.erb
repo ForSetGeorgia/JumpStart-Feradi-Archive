@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <% if @no_index_meta %>
+      <META NAME="ROBOTS" CONTENT="NOINDEX, FOLLOW">
+    <% else %>
+      <%
+        desc = t("#{params[:controller]}.#{params[:action]}.meta_description", :default => '')
+        share_image = full_url(image_path('logo.png'))
+        Globalize.with_locale(@language) do
+          if @visualization && @visualization.id && @visualization.explanation.present?
+            desc = @visualization.explanation.gsub("\n", " ")
+          elsif @idea && @idea.id && @idea.explaination.present?
+            desc = @idea.explaination.gsub("\n", " ")
+          end
+
+          if @visualization && @visualization.id && @visualization.image_file_name.present?
+            share_image = full_url(@visualization.image.url(:thumb, false))
+          end
+        end
+      %>
+
+		  <meta property="og:title" content="<%= content_for?(:title) ? "#{yield(:title)} | #{t('app.common.app_name')}" :
+				  t('app.common.app_name') %>" />
+  		<meta property="og:description" content="<%= desc %>" />
+      <meta name="description" content="<%= desc %>">
+		  <meta property="og:type" content="non_profit" />
+		  <meta property="og:url" content="<%= current_url(replace_https: true) %>" />
+		  <meta property="og:image" content="<%= share_image %>" />
+		  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
+		  <meta property="fb:app_id" content="<%= ENV['VISUALIZING_NEWS_FACEBOOK_APP_ID'] %>" />
+    <% end %>
+
+    <title><%= content_for?(:title) ? "#{yield(:title)} | #{t('app.common.app_name')}" :
+				t('app.common.app_name') %></title>
+    <%= csrf_meta_tags %>
+	  <%= include_gon %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "fonts_#{I18n.locale}", :media => "all" %>
+		<!--[if IE 6]><%= stylesheet_link_tag 'ie6' %><![endif]-->
+	  <!--[if IE 7]><%= stylesheet_link_tag 'ie7' %><![endif]-->
+
+    <!--[if gte IE 9]>
+      <style type="text/css">
+        .gradient {
+           filter: none;
+        }
+      </style>
+    <![endif]-->
+
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <%= favicon_link_tag '/favicon.ico', :rel => 'shortcut icon' %>
+
+		<%= yield(:head) %>
+  </head>
+  <body>
+		<!-- facebook api -->
+		<div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '<%= @fb_app_id %>',
+          channelUrl : '<%= "#{request.protocol}#{request.host_with_port}/channel.html" %>',
+          status     : true,
+          cookie     : true,
+          xfbml      : true
+        });
+
+		    // when a comment is submitted, notify the user of the idea
+		    if (gon.show_fb_comments){
+			    FB.Event.subscribe('comment.create', function(response){
+				    // get id of record
+				    var resp_url_ary = response.href.split("/");
+				    var id = resp_url_ary[resp_url_ary.length-1].split("?")[0];
+
+            // send out notifications
+            // check if visuals or ideas comments
+            var url_ary = window.location.pathname.split( '/' );
+
+            if (url_ary.indexOf('visualizations') > -1){
+      				$.get(gon.visual_comment_notification_url.replace(gon.placeholder, id));
+            } else if (url_ary.indexOf('ideas') > -1){
+      				$.get(gon.idea_comment_notification_url.replace(gon.placeholder, id));
+            }
+
+            // increment comment count on page
+            $('span.comment_count_number').each(function(index, element){
+              $(this).parent().fadeOut('slow', function(){
+                var old_count = parseInt($(element).html());
+                $(element).html(old_count+1);
+                $(this).css('color', '#fff');
+                $(this).css('background-color', '#469e72');
+                $(this).fadeIn('slow', function(){
+                  $(this).animate({color: '#757575', backgroundColor: 'transparent'}, 1000);
+                });
+              });
+            });
+			    });
+		    }
+
+
+		    // when a like is submitted, record it locally
+		    if (gon.show_fb_like){
+			    FB.Event.subscribe('edge.create', function(response){
+				    // get id of record
+				    var resp_url_ary = response.split("/");
+				    var id = resp_url_ary[resp_url_ary.length-1].split("?")[0];
+
+            // record the like
+            // check if visuals or ideas comments
+            var url_ary = window.location.pathname.split( '/' );
+            if (url_ary.indexOf('visualizations') > -1){
+      				$.get(gon.visual_fb_like_url.replace(gon.placeholder, id));
+            } else if (url_ary.indexOf('ideas') > -1){
+      				$.get(gon.idea_fb_like_url.replace(gon.placeholder, id));
+            }
+			    });
+		    }
+      };
+
+      // Load FB's JS SDK
+      (function(d, debug){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+        ref.parentNode.insertBefore(js, ref);
+      }(document, /*debug*/ false));
+    </script>
+
+    <div class="language-switcher">
+      <ul>
+        <% I18n.available_locales.each do |locale| %>
+          <li class='language-switcher-item'>
+            <%= generate_language_switcher_link(locale) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div id="frozen-menu">
+      <a class="menu-collapse" href="javascript:;">
+        <%= t('app.common.app_name') %>
+        <img class="down" src="/assets/org_downarrow.png" />
+        <img class="up" src="/assets/org_uparrow.png" />
+      </a>
+      <div class="menu-collapse">
+        <div class="brand">
+          <%= link_to(image_tag('logo.png', :alt => t('app.common.app_name')),
+					  root_path(:locale => I18n.locale),
+					  :title => t('app.common.app_name'))%>
+          <%#= link_to root_path(:locale => I18n.locale), :title => t('app.common.article_169') do %>
+            <%#= image_tag('logo_feradi_censored.png', :alt => t('app.common.app_name'), :id => 'logo') %><%= image_tag('logo.png', :alt => t('app.common.app_name'), :id => 'logo_rollover') %>
+          <%# end %>
+        </div>
+
+        <ul class="nav-menu">
+          <li><%= link_to t('.menu_visual'), visuals_path(remove_unwanted_params(@param_options, true)), :class => assign_active_class(visuals_path) %></li>
+          <li><%= link_to t('.menu_idea'), ideas_path(remove_unwanted_params(@param_options, true)), :class => assign_active_class(ideas_path) %></li>
+<%
+=begin %>
+
+          <li><%= link_to t('.menu_submit_visual'), submit_visual_path, :class => assign_active_class(submit_visual_path)  %></li>
+          <li><%= link_to t('.menu_data'), data_path, :class => assign_active_class(data_path)  %></li>
+<%
+=end %>
+          <li><%= link_to t('.menu_about'), about_path, :class => assign_active_class(about_path)  %></li>
+          <li><%= link_to t('.menu_contact'), contact_path, :class => 'fancybox' %></li>
+        </ul>
+
+        <ul class="user-menu">
+          <% if user_signed_in? %>
+	          <li class="dropdown">
+	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                  <%= current_user.nickname %>
+	                  <b class="caret"></b>
+	            </a>
+	            <ul class="dropdown-menu">
+							  <% current_user.organizations.each do |org| %>
+					        <li>
+		   		         <%= link_to t('helpers.links.org_profile', :org => org.name),
+											  organization_path(org.permalink) %>
+								  </li>
+					        <li>
+		   		         <%= link_to t('helpers.links.new_visual', :org => org.name),
+											  new_organization_visualization_path(org.permalink) %>
+								  </li>
+							  <% end %>
+			          <li>
+	   		         <%= link_to t('.notifications'), notifications_path %>
+							  </li>
+							  <% if current_user.role?(User::ROLES[:admin]) %>
+					        <li>
+		   		         <%= link_to t('.admin'), admin_path %>
+								  </li>
+							  <% end %>
+
+                <% if current_user.role?(User::ROLES[:analytics]) %>
+
+                  <li>
+                    <%= link_to t('.analytics'), admin_analytics_path %>
+                  </li>
+
+                <% end %>
+			          <li>
+	   		         <%= link_to t('.sign_out'), destroy_user_session_path, :method => :delete %>
+							  </li>
+	            </ul>
+	          </li>
+				  <% else %>
+					  <li>
+						  <%= link_to t('helpers.links.sign_in2'), new_user_session_path({:load_media => false}), :class => 'fancybox', :id => 'user_sign_in' %>
+					  </li>
+          <% end %>
+        </ul>
+
+        <ul id="follow-us">
+          <input type="text" class="search" placeholder="<%= t('app.common.search')%>" id="menu-search" data-path="<%= visuals_path %>" />
+          <div class="clear">
+            <li><a class="fb" title="<%= t('.facebook') %>" href="https://www.facebook.com/JumpStartGeorgia/" target="_blank"></a></li>
+            <li><a class="twitter" title="<%= t('.twitter') %>" href="https://twitter.com/jsgeorgia" target="_blank"></a></li>
+            <!--li><a class="pinterest" title="<%= t('.pinterest') %>" href="http://pinterest.com/feradi/" target="_blank"></a></li-->
+			      <li><%= link_to "", visuals_path(:format => :atom), :class => 'rss', :title => t('.rss') %></li>
+			      <li><%= link_to "", notifications_path, :class => 'mail', :title => t('.notifications') %></li>
+			    </div>
+        </ul>
+
+      </div><!--div.menu-collapse-->
+
+    </div>
+
+    <div id="everything-else">
+
+      <div class="stretch">
+
+		    <div id="wrapper">
+		      <div class="container-fluid">
+		        <div class="content">
+		          <div class="row-fluid">
+		            <div class="span12">
+							    <% flash.each do |key, msg| %>
+								    <div class="alert <%= flash_translation(key) %> fade in">
+									    <a href="#" data-dismiss="alert" class="close">×</a>
+									    <%= msg %>
+								    </div>
+							    <% end %>
+
+	                <%= yield %>
+	              </div><!--/span-->
+		          </div><!--/row-->
+		        </div><!--/content-->
+		       </div> <!-- /container -->
+		    </div><!--/wrapper-->
+
+		  </div>
+
+      <div class="push"><!--//--></div>
+
+      <footer class="clear">
+        <div class="gradient clear"></div>
+			  <div id="left">&copy; <%= Time.now.year %></div>
+		    <div id="middle">
+				  <%# link_to t('.terms'), terms_path %>
+			  </div>
+			  <div id="right" class="clear">
+				  <ul>
+					  <!--li id="js_link_text">
+						  <%= t(".js_link_text") %>:
+					  </li-->
+					  <li class="js-logo">
+						  <%= link_to(image_tag("jumpstart-logo.png"), "http://www.jumpstart.ge", :target => "_blank",
+								  :title => t(".js_link_title")	) %>
+							<div class='custom-container is-hidden-on-small-screen'>
+                <img src="/assets/logo-wheel.png" />
+              </div>
+					  </li>
+				  </ul>
+			  </div>
+      </footer>
+
+    </div><!--#everything-else-->
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+		<script type="text/javascript">
+			I18n.defaultLocale = "<%= I18n.default_locale %>";
+			I18n.locale = "<%= I18n.locale %>";
+		</script>
+
+		<% if Rails.env.production? %>
+			<!-- insert google analytics for production site here -->
+			<script type="text/javascript">
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-12801815-12']);
+				_gaq.push(['_trackPageview']);
+				(function() {
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+		<% elsif Rails.env.staging? %>
+			<!-- insert google analytics for staging site here -->
+		<% end %>
+
+  </body>
+</html>

@@ -1,0 +1,79 @@
+
+/*
+  reduced padding by 10 so that pages with scrollbars will not cause a shorter width
+   200px  00px     260px  260px  260px  260px  260px         00px    = 1500px
+   menu   padding  grid   grid   grid   grid   get_involved  padding
+
+   200px  00px     260px  260px  260px  260px         00px           = 1250px
+   menu   padding  grid   grid   grid   get_involved  padding
+
+   200px  00px     260px  260px  260px         00px                  = 980px
+   menu   padding  grid   grid   get_involved  padding
+
+   200px  00px     260px  260px  00px                                = 720px
+   menu   padding  grid   grid   padding
+
+
+   200px  00px     270px  270px  270px  270px  270px         00px    = 1550px
+   menu   padding  grid   grid   grid   grid   get_involved  padding
+
+   200px  00px     270px  270px  270px  270px         00px           = 1280px
+   menu   padding  grid   grid   grid   get_involved  padding
+
+   200px  00px     270px  270px  270px         00px                  = 1010px
+   menu   padding  grid   grid   get_involved  padding
+
+   200px  00px     270px  270px  00px                                = 740px
+   menu   padding  grid   grid   padding
+
+*/
+
+#about_page{
+	height: 1246px;
+	width: 1240px;
+  &.locale_en{
+  	background: url('/assets/about_big.png');
+	  background-position: top;
+	  background-repeat: no-repeat;
+  }
+  &.locale_ka{
+  	background: url('/assets/about_big_ge.png');
+	  background-position: top;
+	  background-repeat: no-repeat;
+  }
+  &.locale_hy{
+    background: url('/assets/about_big_hy.png');
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+	#hide_text{
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}
+
+
+/*@media (max-width: 1249px)*/
+@media (max-width: 1279px)
+{
+	#about_page{
+		height: 1246px;
+		width: 814px;
+    &.locale_en{
+  		background: url('/assets/about_small.png');
+	    background-position: top;
+	    background-repeat: no-repeat;
+    }
+    &.locale_ka{
+  		background: url('/assets/about_small_ge.png');
+	    background-position: top;
+	    background-repeat: no-repeat;
+    }
+    &.locale_hy{
+      background: url('/assets/about_small_hy.png');
+      background-position: top;
+      background-repeat: no-repeat;
+    }
+	}
+}

@@ -1,0 +1,71 @@
+<%- model_class = Visualization -%>
+<%- model_class_trans = VisualizationTranslation -%>
+
+<%
+  if params[:action] == 'new' || params[:action] == 'create'
+    path = organization_visualizations_path(params[:organization_id])
+  else
+    path = organization_visualization_path(params[:organization_id], params[:id])
+  end
+%>
+<%= semantic_nested_form_for([@organization, @visualization],
+      :url => path,
+      :html => { :class => 'form-horizontal precrop' }) do |f| %>
+		<%= f.error_messages %>
+
+	<% if @visualization.id.nil? %>
+
+		<%= render partial: 'visualizations/form/new', locals: {
+          f: f,
+          model_class: model_class
+        } %>
+
+  <% elsif @visual_image_file_reset %>
+
+    <%= render partial: 'visualizations/form/reset_visual_image_file', locals: {
+          f: f
+        } %>
+
+  <% elsif @video_url_reset %>
+
+  <%= render partial: 'visualizations/form/reset_video_url', locals: {
+        f: f
+      } %>
+
+  <% elsif @interactive_url_reset %>
+
+  <%= render partial: 'visualizations/form/reset_interactive_url', locals: {
+        f: f
+      } %>
+
+	<% elsif !@locale_to_crop.blank? %>
+
+		<%= render partial: 'visualizations/form/locale_to_crop', locals: {
+          f: f
+        } %>
+
+  <% elsif @reset_lanaguages == true %>
+
+    <%= render partial: 'visualizations/form/reset_languages', locals: {
+          f: f,
+          model_class: model_class
+        } %>
+
+	<% else %>
+
+		<%= render partial: 'visualizations/form/edit', locals: {
+          f: f,
+          model_class: model_class,
+          model_class_trans: model_class_trans
+        } %>
+
+	<% end %>
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+	  <%= f.submit nil, :class => 'btn btn-warning', :type => :reset, :value => t('helpers.links.reset'), :name => :reset %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                organization_path(params[:organization_id]), :class => 'btn btn-mini btn-warning' %>
+  </div>
+<% end %>

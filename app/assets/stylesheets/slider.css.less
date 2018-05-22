@@ -1,0 +1,63 @@
+#filter_bar {
+  a {
+    color: #7b7b7b;
+    img {
+      vertical-align: middle;
+    }
+    span.filter_selection {
+      color: #a9abad;
+    }
+    .caret{
+      border-top-color: #7b7b7b;
+      border-bottom-color: #7b7b7b;
+    }
+  }
+  .dropdown-menu {
+    a {
+      color: #a9abad;
+      text-decoration: none;
+      &:hover{
+        background: #e5e5e5;
+      }
+      div:first-of-type {
+        width: 15px;
+        text-align: center;
+        display: inline-block;
+      }
+      div:last-of-type {
+        text-align: left;
+        display: inline-block;
+      }
+    }
+  }
+
+  #idea_search {
+    margin-left: 10px;
+    margin-right: 10px;
+    input[type="text"] {
+    }
+    button[type="submit"] {
+      background: #ba6743;
+      color: #fff;
+      font-family: exo_regular;
+      width: 78px;
+      height: 30px;
+      font-size: 14px;
+      text-shadow: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+}
+
+#filter_bar_inner {
+  background: #fff;
+  .heart {
+    font-size: 17px;
+  }
+}
+
+#q + button {
+  display: none;
+}

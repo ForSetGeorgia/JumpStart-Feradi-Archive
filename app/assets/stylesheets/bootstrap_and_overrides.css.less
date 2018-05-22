@@ -1,0 +1,230 @@
+@import "twitter/bootstrap/bootstrap";
+body {
+//  padding-top: 60px;
+}
+
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+html, body {
+  height: 100%;
+  font-size: 13px;
+}
+
+/*#wrapper {*/
+#everything-else .stretch {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -155px;
+}
+
+#wrapper > .container-fluid {
+  padding-top: 0px;
+  padding-bottom: 60px;
+  overflow: visible;
+  padding-left: 20px;
+  padding-right: 0px;
+}
+
+@media (min-width: 979px) {
+  #filter_bar {
+    margin-left: -20px;
+    padding-top: 20px;
+  }
+}
+
+#about_page, .negative-margin {
+  margin-left: -20px;
+}
+
+/* style for looking at interactive visual with iframe */
+body#interactive_layout {
+  .navbar {
+/*
+    border-bottom: solid 3px #9a9a9a;
+*/
+    border: none;
+    .navbar-inner {
+      .box-shadow(0px 3px 3px 1px rgba(0, 0, 0, 0.38));
+      background: #fbfbfb;
+      a.brand {
+      }
+    }
+    .container-fluid {
+      padding-right: 0px;
+    }
+  }
+
+  #social {
+    padding: 0px 40px 14px 30px;
+    & > div {
+      float: left;
+
+    }
+    #close-link, #share-links {
+      float: none;
+      display: block;
+    }
+    #close-link {
+      margin-top: 5px;
+      margin-bottom: 9px;
+      a {
+        display: block;
+        float: right;
+        color: #aaa;
+        padding-right: 3px;
+      }
+    }
+    #share-links {
+      ul.nav {
+        float: right;
+        margin-right: 0px;
+        li {
+          a {
+            padding: 0px 2px;
+            &:hover {
+              opacity: 0.7;
+              filter: alpha(opacity=70);
+            }
+          }
+          &#like_btn_item{
+            margin-right: 25px;
+            margin-top: 3px;
+            a.like_btn {
+              text-shadow: none;
+              font-family: themix_regular;
+              display: inline-block;
+              text-transform: uppercase;
+              color: #fff;
+              background: #ddd;
+              text-decoration: none;
+              padding: 5px 9px 4px;
+              font-size: 14px;
+              text-align: center;
+              .heart, .text {
+                float: left;
+                display: block;
+              }
+              .heart {
+                color: #fff;
+                font-size: 15px;
+                margin-right: 5px;
+              }
+              &:hover {
+                background: #469e72;
+                opacity: 1.0;
+                filter: alpha(opacity=100);
+                &.disabled{
+                  background: #ddd;
+                  cursor: default;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    #close-button {
+      width: 12px;
+      height: 12px;
+      display: block;
+      background: url('/assets/close_button.png') 0px 0px no-repeat;
+      margin-top: 7px;
+      margin-left: 20px;
+      &:hover {
+        background-position: 0px 100%;
+      }
+    }
+  }
+
+  iframe#interactive {
+    padding-top: 83px;
+  }
+}
+
+.push { height: 135px; } /* Just some arbitrary space to add between footer and rest of the content, when they are close */
+
+@media (max-width: 979px) {
+  body {
+    margin-top: 0;
+  }
+  #wrapper > .container-fluid {
+    padding: 0 0 1em 20px;
+  }
+  .navbar-fixed-top  {
+    margin: 0;
+  }
+
+  /* style for looking at interactive visual with iframe */
+  body#interactive_layout {
+    iframe#interactive {
+      padding-top: 0;
+    }
+  }
+}
+
+.container-fluid > ul.nav  {
+  line-height: 20px;
+}
+.navbar-fixed-top .navbar-inner .container-fluid .brand {
+  font-size: 19px;
+}
+
+
+
+
+
+/* navbar for locale */
+
+.navbar.def {
+  margin-bottom: 0px;
+  .navbar-inner {
+    &, & * {
+      min-height: 1px;
+    }
+    background: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+  }
+}
+
+[class^="icon-"], [class*="icon-"] {
+  background-position: inherit;
+}
+
+.table-striped tbody tr {
+  background-color: darken(#f9f9f9, 10%);
+}

@@ -1,0 +1,184 @@
+<%
+  show_toggle ||= false
+  hide_slider = show_toggle ? "display: none;" : ""
+hide_slider = ''
+%>
+<div id="filter_bar" class="navbar">
+
+  <% if show_toggle %>
+    <div id="toggle_categories">
+      <%= t('.categories')%>
+      <br />
+      <%= image_tag('org_downarrow.png', :id => "category_arrow")%>
+    </div>
+  <% end %>
+
+
+  <div id="category_slider" style="<%=hide_slider%>">
+
+    <ul id="category_slider_content" class="elastislide-list">
+      <% @categories.each_with_index do |cat, cat_i| %>
+        <% if cat.icon_file_name %>
+          <% if cat.permalink == params[:category] || (params[:category].blank? && cat.permalink == I18n.t('filters.category_default'))
+            li_class = 'class="active"'.html_safe
+            %><script id="slider_index" type="text/javascript">var slider_start_index = <%= cat_i.to_s %>;</script><%
+          else
+            li_class = ''
+          end %>
+          <li <%= li_class %> id="category_item_<%= cat.id %>">
+            <%= link_to(url_for(params.merge(:category => cat.permalink)),
+              :'data-path' => cat.icon.url,
+              :title => cat.name) do %>
+              <%= image_tag(cat.icon.url) %>
+              <div class="slider_text">
+                <%= cat.name %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+
+  </div>
+
+  <div id="filter_bar_inner" class="container">
+		<ul class="nav">
+			<li class="dropdown">
+				<a id="filter_type" class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<%= t('filters.visuals.type.header')%>:
+					<span id="filter_type_selection" class="filter_selection">
+					  <%= image_tag('filter_icons/' + @visuals_filter_type_icon + '.png', :title => t('filters.visuals.type.' + @visuals_filter_type_icon)) %>
+					</span>
+	        <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li>
+						<%= link_to url_for(params.merge(:type => 'all')) do %>
+              <div><%= image_tag('filter_icons/all.png') %></div>
+              <div><%= t('filters.visuals.type.all') %></div>
+            <% end %>
+					</li>
+
+          <%
+            show_non_published = user_signed_in? && @user_in_org && current_user.role?(User::ROLES[:org_admin]) && @param_options[:org].present?
+
+            if show_non_published
+              @visual_counts_by_type = Visualization.counts_by_type
+            else
+              @visual_counts_by_type = Visualization.counts_by_type(only_published: true)
+            end
+          %>
+
+          <% Visualization.types.each do |vis_type| %>
+
+            <% unless @visual_counts_by_type[vis_type] == 0 %>
+
+              <li>
+                <%= link_to url_for(params.merge(type: vis_type.to_s)) do %>
+                  <div><%= image_tag("filter_icons/#{vis_type}.png") %></div>
+                  <div><%= t("filters.visuals.type.#{vis_type}") %></div>
+                <% end %>
+              </li>
+
+            <% end %>
+
+          <% end %>
+
+          <% if show_non_published %>
+					  <li>
+						  <%= link_to url_for(params.merge(:type => 'not_published')) do %>
+                <div><%= image_tag('filter_icons/not_published.png') %></div>
+                <div><%= t('filters.visuals.type.not_published') %></div>
+              <% end %>
+					  </li>
+          <% end %>
+          <% if user_signed_in? && current_user.role?(User::ROLES[:visual_promotion]) %>
+					  <li>
+						  <%= link_to url_for(params.merge(:type => 'not_promoted')) do %>
+                <div><%= image_tag('filter_icons/not_promoted.png') %></div>
+                <div><%= t('filters.visuals.type.not_promoted') %></div>
+              <% end %>
+					  </li>
+          <% end %>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a id="filter_organize" class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<%= t('filters.visuals.organize.header')%>:
+					<span id="filter_organize_selection" class="filter_selection">
+					  <%= (@visuals_filter_organize_icon == 'likes' ? '<span class="heart" title="Likes">❤</span>'.html_safe : image_tag('filter_icons/' + @visuals_filter_organize_icon + '.png', :title => t('filters.visuals.organize.' + @visuals_filter_organize_icon))) %>
+				  </span>
+	        <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li>
+						<%= link_to url_for(params.merge(:organize => 'recent')) do %>
+              <div><%= image_tag('filter_icons/recent.png') %></div>
+              <div><%= t('filters.visuals.organize.recent') %></div>
+            <% end %>
+					</li>
+					<li>
+						<%= link_to url_for(params.merge(:organize => 'likes')) do %>
+              <div><span class="heart">❤</span></div>
+              <div><%= t('filters.visuals.organize.likes') %></div>
+            <% end %>
+					</li>
+					<li>
+						<%= link_to url_for(params.merge(:organize => 'views')) do %>
+              <div><%= image_tag('filter_icons/views.png') %></div>
+              <div><%= t('filters.visuals.organize.views')%></div>
+            <% end %>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a id="filter_view" class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<%= t('filters.visuals.view.header')%>:
+					<span id="filter_view_selection" class="filter_selection">
+					  <%= image_tag('filter_icons/' + @visuals_filter_view_icon + '.png', :title => t('filters.visuals.view.' + @visuals_filter_view_icon)) %>
+				  </span>
+	        <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li>
+						<%= link_to url_for(params.merge(:view => 'grid')) do %>
+              <div><%= image_tag('filter_icons/grid.png') %></div>
+              <div><%= t('filters.visuals.view.grid')%></div>
+            <% end %>
+					</li>
+					<li>
+						<%= link_to url_for(params.merge(:view => 'list')) do %>
+              <div><%= image_tag('filter_icons/list.png') %></div>
+              <div><%= t('filters.visuals.view.list')%></div>
+            <% end %>
+					</li>
+				</ul>
+			</li>
+      <li class="dropdown">
+        <a id="filter_language" class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <%= t('filters.visuals.language.header')%>:
+          <span id="filter_language_selection" class="filter_selection">
+            <%= image_tag 'filter_icons/' + @visuals_filter_language_icon + '.png', :title => @visuals_filter_language_selection %>
+          </span>
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <% I18n.available_locales.each do |locale| %>
+          <li>
+            <%= link_to url_for(params.merge(:language => locale)) do %>
+              <div><%= image_tag("filter_icons/#{locale}.png") %></div>
+              <div><%= t("app.language.#{locale}")%></div>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </li>
+		</ul>
+    <div class="visual_search">
+      <%= form_tag visuals_path(remove_unwanted_params(@param_options)), :method => :get, :class => "form-search visual_search_form", :id => 'visuals_form_search' do %>
+        <%= text_field_tag :q, params[:q], :class => 'visual_search_form_input input-large', :placeholder => t('app.common.search')%>
+        <%= button_tag t('app.common.search'), :class => 'visual_search_form_button btn' %>
+      <% end %>
+    </div>
+	</div>
+</div>

@@ -1,0 +1,273 @@
+
+@import "twitter/bootstrap/variables";
+@import "twitter/bootstrap/mixins";
+
+#submit_visual, #send_data, #contact {
+
+  .page-header {
+    h1 {
+      color: #469e72;
+    }
+  }
+
+  p, .p {
+    font-family: themix_regular;
+    max-width: 910px;
+  }
+
+  label {
+    color: #f87364;
+    margin-top: 1px;
+  }
+
+  abbr {
+    border-bottom: none;
+  }
+
+  .control-group {
+    margin-top: 12px;
+  }
+
+  input, textarea {
+    border: none;
+    -webkit-border-radius: 0px;
+       -moz-border-radius: 0px;
+            border-radius: 0px;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+  }
+
+  input[type="text"], input[type="password"], input[type="email"], textarea {
+    border: 1px solid #e7e7e7;
+    color: #ababab;
+    font-size: 14px;
+    font-family: verdana, arial, sans-serif;
+    max-width: none;
+    width: 600px;
+  }
+
+  input[type="text"], input[type="password"], input[type="email"], input[type="submit"], textarea {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+  input[type="text"], input[type="password"], input[type="email"] {
+    padding-left: 30px;
+    height: 29px;
+  }
+
+  #message_datasource {
+    padding-left: 9px;
+  }
+
+  textarea {
+    padding: 4px 9px;
+  }
+
+  input[type="submit"] {
+    font-family: exo_regular;
+    color: #fff;
+    background: #469E72;
+    width: 78px;
+    height: 30px;
+    font-size: 14px;
+    text-shadow: none;
+  }
+
+}
+
+#send_data {
+
+  .page-header {
+    h1 {
+      color: #de4355;
+    }
+  }
+
+  input[type="submit"] {
+    background: #de4355;
+  }
+}
+
+
+
+#message_name, #message_organization, #message_email, #message_phone {
+  background: #fff 9px center no-repeat;
+}
+#message_message {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 9px 9px;
+}
+
+#message_name {
+  background-image: url('/assets/user_icon.png');
+}
+
+#message_organization {
+  background-image: url('/assets/organization_icon.png');
+}
+
+#message_email {
+  background-image: url('/assets/email_icon.png');
+}
+
+#message_phone {
+  background-image: url('/assets/phone_icon.png');
+}
+
+#message_message {
+  background-image: url('/assets/message_icon.png');
+}
+
+#message_file_input {
+  display: none;
+}
+
+#file_replacement {
+  cursor: pointer;
+  border: 1px solid #d3d7a7;
+  color: #df4758;
+  background: #fafddc url('/assets/upload_icon.png') 9px center no-repeat;
+  margin-bottom: 25px;
+  padding: 5px 10px 5px 42px;
+  display: inline-block;
+}
+
+
+
+
+
+
+
+#contact {
+  width: 370px;
+  & > .header {
+    .clearfix();
+    .circles {
+      float: left;
+      margin-top: 25px;
+      margin-left: -16px;
+      div {
+        .border-radius(50%);
+        float: left;
+      }
+      .d1 {
+        width: 25px;
+        height: 25px;
+        background: #ce495f;
+        margin-top: 9px;
+      }
+      .d2 {
+        width: 12px;
+        height: 12px;
+        background: #076867;
+        margin-top: 30px;
+        margin-left: -2px;
+      }
+      .d3 {
+        width: 9px;
+        height: 9px;
+        background: #f87364;
+        margin-top: 5px;
+        margin-left: -4px;
+      }
+      .d4 {
+        width: 16px;
+        height: 16px;
+        background: #e9f0a8;
+        margin-top: 16px;
+      }
+      .d5 {
+        width: 13px;
+        height: 13px;
+        background: #3a8f5f;
+        margin-top: 35px;
+        margin-left: -6px;
+      }
+    }
+  }
+  .page-header {
+    float: left;
+    margin-top: 25px;
+    padding-left: 10px;
+    h1 {
+      letter-spacing: -2px;
+      font-weight: bold;
+      color: rgba(0, 0, 0, .37);
+      span {
+        .l1 {
+          color: #469E72;
+        }
+        .l2 {
+          color: #f87364;
+        }
+      }
+    }
+  }
+  & > .header {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  form {
+    margin-bottom: 33px;
+  }
+  & > .header, input[type="text"], input[type="submit"], textarea, .help-inline, .errorExplanation, .header + p {
+    width: 280px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .errorExplanation {
+    margin-top: 1em;
+    .box-sizing(border-box);
+  }
+  .header + p {
+    margin-top: 15px;
+  }
+  input[type="submit"] {
+    background-color: #e9f0a8;
+    color: #469E72;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+  textarea {
+    padding-left: 30px;
+  /*
+    &:focus {
+    }
+    &::-webkit-input-placeholder {
+      padding-left: 21px;
+    }
+    &:-moz-placeholder {
+      padding-left: 21px;
+    }
+    &::-moz-placeholder {
+      padding-left: 21px;
+    }
+    &:-ms-input-placeholder {  
+      padding-left: 21px;
+    }
+  */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

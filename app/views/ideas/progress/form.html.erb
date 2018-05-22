@@ -1,0 +1,66 @@
+<div id="ideas_progress_form_container">
+
+<% if @idea && @org %>
+  <% page_title = ''
+	   if params[:action].downcase == "claim" 
+		   page_title = t('.title_claim') 
+	   elsif params[:action].downcase == "edit" || params[:action].downcase == 'update' 
+		   page_title = t('.title_edit_progress') 
+	   else 
+		   page_title = t('.title_progress_update') 
+	   end %>
+
+	<% title page_title %>
+  <div class="header">
+    <%= page_title %>
+  </div>
+
+	<p>
+		<% if @org.logo_file_name %>
+			<%= image_tag @org.logo.url %>
+		<% else %>
+			<%= @org.name %>
+		<% end %>
+	</p>
+
+	<% if params[:action].downcase == 'edit' || params[:action].downcase == 'update'
+			url = ideas_update_progress_path(@idea_progress.id)
+			method = 'put'
+	   else
+			url = :ideas_create_progress
+			method = 'post'
+	   end %>
+
+	<%= semantic_form_for([:ideas, @idea_progress], :url => url, :method => method) do |f| %>
+		<%= f.error_messages %>
+		<%= f.inputs do %>
+			<%= f.hidden_field :idea_id, :value => @idea.id %>
+			<%= f.hidden_field :organization_id, :value => @org.id %>
+
+			<%= f.input :progress_date, :as => :string, :input_html => {:size => 20} %>
+			<%= f.input :idea_status, :collection => IdeaStatus.sorted, :include_blank => false %>
+			<%= f.input :explaination, :as => :text, :input_html => {:rows => 4, :cols => 50} %>
+      <% if user_signed_in? && current_user.role?(User::ROLES[:org_admin])%>
+        <input type="hidden" name="idea_progress[is_public]" value="0" />
+        <label class="checkbox">
+          <input type="checkbox" name="idea_progress[is_public]" value="1" checked="checked" />
+          <%= t('activerecord.attributes.idea.is_public') %>
+        </label>
+      <% end %>
+			<%= f.input :url %>
+
+		<% end %>
+
+	  <%= f.submit nil %>
+	<% end %>
+
+<% else %>
+	<% title t('.title_error') %>
+
+	<p>
+		<%= t('.error') %>
+	</p>
+
+<% end %>
+
+</div>
