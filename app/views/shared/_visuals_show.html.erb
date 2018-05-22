@@ -17,10 +17,6 @@
         <%= page_title @visualization.title.html_safe %>
       </div>
 
-      <div class="side_block mod-feradi">
-        <iframe id="fb_iframe" src="//www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/JumpStartGeorgia&amp;width=230&amp;height=100&amp;show_faces=false&amp;colorscheme=light&amp;stream=false&amp;border_color=%23fff&amp;header=false" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-      </div>
-
     </div>
 
     <div id="visualization_row1a" class="row-fluid">
@@ -309,26 +305,6 @@
         </div>
 
         <div id="share">
-          <div class="social-links clear">
-            <span><%= t('app.common.share'); %>: </span>
-            <div>
-              <%= link_to(image_tag("share_fb.png"),
-                    "http://www.facebook.com/share.php?u=#{current_url}",
-                    :title => "facebook",	:target => "_blank") %>
-              <%= link_to(image_tag("share_twitter.png"),
-                    "https://twitter.com/share?url=#{current_url}", :title => "twitter",
-                    :target => "_blank") %>
-              <%= link_to(image_tag("share_gplus.png"),
-                    "https://plusone.google.com/_/+1/confirm?hl=en&url=#{current_url}", :title => "google+",
-                    :target => "_blank") %>
-              <% if @visualization.image.present? %>
-                <%= link_to(image_tag("share_pinterest.png"),
-                  "http://pinterest.com/pin/create/button/?url=#{current_url}&media=#{full_url(image_path(@visualization.image.url(:medium, false)))}&description=#{@visualization.title}", :title => "pinterest",
-                  :onclick => "window.open(this.href); return false;") %>
-              <% end %>
-            </div>
-          </div>
-
           <div class="embed">
             <span><%= t('.embed')%>:</span>
               <textarea readonly onfocus="setTimeout(function (t){ t.select(); }, 10, this);"
@@ -363,26 +339,6 @@
 
              %></textarea>
           </div>
-
-          <% if @visualization.printable? %>
-
-            <div class='print-visualization'>
-
-              <span class='print-visualization-label'>
-                <%=t '.print.label' %>:
-              </span>
-
-              <div class='print-visualization-text'>
-                <%=t ".print.question.#{@visualization.type}", default: t('.print.question.default') %>
-                <%= link_to t('.print.contact_us'),
-                            contact_path(default_message_value: print_vis_message_text(@visualization.title)),
-                            class: 'print-visualization-text-contact fancybox' %>
-              </div>
-
-            </div>
-
-          <% end %>
-
         </div>
       </div>
 

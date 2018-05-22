@@ -32,7 +32,6 @@
 		  <meta property="og:url" content="<%= current_url(replace_https: true) %>" />
 		  <meta property="og:image" content="<%= share_image %>" />
 		  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
-		  <meta property="fb:app_id" content="<%= ENV['VISUALIZING_NEWS_FACEBOOK_APP_ID'] %>" />
     <% end %>
 
     <title><%= content_for?(:title) ? "#{yield(:title)} | #{t('app.common.app_name')}" :
@@ -167,14 +166,6 @@
 
         <ul class="nav-menu">
           <li><%= link_to t('.menu_visual'), visuals_path(remove_unwanted_params(@param_options, true)), :class => assign_active_class(visuals_path) %></li>
-          <li><%= link_to t('.menu_idea'), ideas_path(remove_unwanted_params(@param_options, true)), :class => assign_active_class(ideas_path) %></li>
-<%
-=begin %>
-
-          <li><%= link_to t('.menu_submit_visual'), submit_visual_path, :class => assign_active_class(submit_visual_path)  %></li>
-          <li><%= link_to t('.menu_data'), data_path, :class => assign_active_class(data_path)  %></li>
-<%
-=end %>
           <li><%= link_to t('.menu_about'), about_path, :class => assign_active_class(about_path)  %></li>
           <li><%= link_to t('.menu_contact'), contact_path, :class => 'fancybox' %></li>
         </ul>
@@ -218,22 +209,11 @@
 							  </li>
 	            </ul>
 	          </li>
-				  <% else %>
-					  <li>
-						  <%= link_to t('helpers.links.sign_in2'), new_user_session_path({:load_media => false}), :class => 'fancybox', :id => 'user_sign_in' %>
-					  </li>
           <% end %>
         </ul>
 
         <ul id="follow-us">
           <input type="text" class="search" placeholder="<%= t('app.common.search')%>" id="menu-search" data-path="<%= visuals_path %>" />
-          <div class="clear">
-            <li><a class="fb" title="<%= t('.facebook') %>" href="https://www.facebook.com/JumpStartGeorgia/" target="_blank"></a></li>
-            <li><a class="twitter" title="<%= t('.twitter') %>" href="https://twitter.com/jsgeorgia" target="_blank"></a></li>
-            <!--li><a class="pinterest" title="<%= t('.pinterest') %>" href="http://pinterest.com/feradi/" target="_blank"></a></li-->
-			      <li><%= link_to "", visuals_path(:format => :atom), :class => 'rss', :title => t('.rss') %></li>
-			      <li><%= link_to "", notifications_path, :class => 'mail', :title => t('.notifications') %></li>
-			    </div>
         </ul>
 
       </div><!--div.menu-collapse-->
@@ -300,11 +280,11 @@
 			I18n.locale = "<%= I18n.locale %>";
 		</script>
 
-		<% if Rails.env.production? %>
+		<% if Rails.env.production? && ENV['GOOGLE_ANALYTICS'].present? %>
 			<!-- insert google analytics for production site here -->
 			<script type="text/javascript">
 				var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', 'UA-12801815-12']);
+				_gaq.push(['_setAccount', '<%= ENV['GOOGLE_ANALYTICS'] %>']);
 				_gaq.push(['_trackPageview']);
 				(function() {
 					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -312,8 +292,6 @@
 					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 				})();
 			</script>
-		<% elsif Rails.env.staging? %>
-			<!-- insert google analytics for staging site here -->
 		<% end %>
 
   </body>
