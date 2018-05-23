@@ -39,14 +39,10 @@
               <%= image_tag('view_icon12.png', :alt => t('filters.ideas.organize.views'), :title => t('filters.ideas.organize.views')) %>
               <%= idea.impressions_count %>
             </li>
-            <li>
-              <%= image_tag('comments_icon12.png', :alt => t('app.common.comments'), :title => t('app.common.comments')) %>
-              <%= idea.fb_count %>
-            </li>
           </ul>
 				</div>
 
-        <div class="item_text">          
+        <div class="item_text">
           <%= auto_link(truncate(idea.explaination, :length => 150, :separator => ' '), :urls, :target => "_blank") %>
         </div>
   		</div>

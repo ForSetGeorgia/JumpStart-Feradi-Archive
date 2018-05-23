@@ -67,13 +67,6 @@
           <%= image_tag('view_icon.png') %>
           <%= "#{@idea.impressions_count} #{t('filters.ideas.organize.views')}" %>
         </li>
-        <li id="<%= "comment_count_#{I18n.locale}"%>">
-          <%= image_tag('comments_icon.png') %>
-          <span class="comment_count_text">
-            <span class="comment_count_number"><%= @idea.fb_count %></span>
-            <%= t('app.common.comments_noun') %>
-          </span>
-        </li>
       </ul>
     </div>
 
@@ -254,20 +247,6 @@
 				<div class="fb-like" data-href="<%= current_url_no_querystring %>" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
       </div>
     </div>
-
-  </div>
-
-  <div id="idea_row4" class="row-fluid clear">
-
-	  <div class="main_block clear">
-		  <h3 class="comments_count">
-        <span class="comment_count_text">
-				  <%= "#{t('app.common.comments')}: "%>
-          <span class="comment_count_number"><%=@idea.fb_count%></span>
-        </span>
-		  </h3>
-		  <div class="fb-comments" data-href="<%= current_url_no_querystring %>" data-num-posts="5" data-width="470"></div>
-	  </div>
 
   </div>
 
