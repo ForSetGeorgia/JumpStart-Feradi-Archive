@@ -326,6 +326,7 @@ ka:
       new: ახალი
     common:
       app_name: feradi.info
+      archive: Archive
       placeholder: placeholder # do not translate
       comments: კომენტარები
       comments_noun: კომენტარი
@@ -397,6 +398,9 @@ ka:
       terms: მომსახურების პირობები
       js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
       js_link_text: აგებულია
+      about_archive:
+        header: Archive
+        text: This is an archive of JumpStart Georgia's feradi.info site that no longer exists.
     interactive:
       go_back: უკან დაბრუნება
     unsupported_browser:

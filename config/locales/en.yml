@@ -327,6 +327,7 @@ en:
       new: New
     common:
       app_name: feradi.info
+      archive: Archive
       placeholder: placeholder
       comments: Comments
       comments_noun: Comments
@@ -398,6 +399,9 @@ en:
       terms: Terms of Service
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
+      about_archive:
+        header: Archive
+        text: This is an archive of JumpStart Georgia's feradi.info site that no longer exists.
     interactive:
       go_back: go back
     unsupported_browser:

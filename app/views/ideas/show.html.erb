@@ -8,14 +8,14 @@
       <% after_title = ''
           x = @idea.last_progress_report(current_user)
          if x.present? && !x.is_cancelled
-           if x.is_completed 
-            after_title << image_tag('completed.png', :title => t('filters.ideas.filter.completed'), :alt => t('filters.ideas.filter.completed')) 
-          else 
+           if x.is_completed
+            after_title << image_tag('completed.png', :title => t('filters.ideas.filter.completed'), :alt => t('filters.ideas.filter.completed'))
+          else
             after_title << image_tag('in_progress.png', :title => t('filters.ideas.filter.in_progress'), :alt => t('filters.ideas.filter.in_progress'))
-          end 
+          end
         end
 
-        if user_signed_in? && !@idea.is_public && (@idea.organization_submitted_idea?(current_user) || @idea.organization_claimed_idea?(current_user)) 
+        if user_signed_in? && !@idea.is_public && (@idea.organization_submitted_idea?(current_user) || @idea.organization_claimed_idea?(current_user))
           after_title << "<span class=\"private_item\">#{t('app.common.is_private')}</span>"
         end
        %>
@@ -42,14 +42,14 @@
         <% else %>
 	        <%= link_to t('helpers.links.follow_idea'), follow_idea_path(@idea.id), :class => 'follow_btn'%>
         <% end %>
-        <% 
+        <%
           can_like = !@idea.voted(current_user, 'up')
           span_text = can_like ? t('app.common.like') : t('app.common.unlike')
           status = can_like ? 'up' : 'down'
         %>
         <%= link_to("<span class=\"heart\">❤</span><span class=\"text\">#{span_text}</span>".html_safe,
 	          idea_vote_path(:id => @idea.id, :status => status),
-	          :class => 'like_btn', :title => span_text, 
+	          :class => 'like_btn', :title => span_text,
 	          :'data-like' => t('app.common.like'), :'data-unlike' => t('app.common.unlike'),
 	          :'data-signed' => user_signed_in?.to_s) %>
       </div>
@@ -91,7 +91,7 @@
 
       		<%= simple_format auto_link(@idea.explaination, :urls, :target => "_blank") %>
 
-          <div id="idea_buttons" class="clear">  
+          <div id="idea_buttons" class="clear">
             <div id="translate">
 			        <% if !@idea.in_locale?(I18n.locale) %>
 				        <%= link_to t('.translate_idea'), google_translate_url(@idea.explaination), :target => :blank %>
@@ -243,29 +243,8 @@
         </ul>
       </div>
 
-      <div id="share">
-        <div class="social-links clear">
-          <span class="sidebar_heading"><%= t('app.common.share'); %>: </span>
-          <div>
-				    <%= link_to(image_tag("share_fb.png"),
-							    "http://www.facebook.com/share.php?u=#{current_url_no_querystring}",
-							    :title => "facebook",	:target => "_blank") %>
-				    <%= link_to(image_tag("share_twitter.png"),
-							    "https://twitter.com/share?url=#{current_url_no_querystring}", :title => "twitter",
-							    :target => "_blank") %>
-				    <%= link_to(image_tag("share_gplus.png"),
-							    "https://plusone.google.com/_/+1/confirm?hl=en&url=#{current_url_no_querystring}", :title => "google+",
-							    :target => "_blank") %>
-				  </div>
-			  </div>
-      </div>
-
-      <div id="fb_like_box">
-        <iframe id="fb_iframe" src="//www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/feradi.info&amp;width=230&amp;height=100&amp;show_faces=false&amp;colorscheme=light&amp;stream=false&amp;border_color=%23fff&amp;header=false" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-      </div>
-
     </div>
- 
+
   </div>
 
   <div id="idea_row3" class="row-fluid">
