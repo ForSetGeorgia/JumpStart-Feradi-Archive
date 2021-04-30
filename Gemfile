@@ -20,7 +20,7 @@ gem "globalize", "3.1.0" # internationalization
 gem "psych", "2.0.13" # yaml parser - default psych in rails has issues
 #gem "will_paginate", "3.0.3" # add paging to long lists
 gem "kaminari", "~> 0.16.3"
-gem "gon", "5.2.3" # push data into js
+gem "gon", "6.4.0" # push data into js
 gem "dynamic_form", "1.1.4" # to see form error messages
 gem "i18n-js", "~> 2.1.2" # to show translations in javascript
 gem "paperclip", "~> 3.4.0" # to upload files
